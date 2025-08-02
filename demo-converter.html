@@ -97,15 +97,26 @@
             <h3>📋 Como Usar</h3>
             <ol style="text-align: left;">
                 <li><strong>Abra o wplace.live</strong> no seu navegador</li>
-                <li><strong>Carregue o bot</strong> colando o script no console (F12)</li>
-                <li><strong>Use o conversor</strong> para transformar sua imagem</li>
-                <li><strong>Cole o código gerado</strong> no console</li>
-                <li><strong>Inicie o desenho</strong> com wplaceBot.start()</li>
+                <li><strong>Abra o Console</strong> (F12 → aba "Console")</li>
+                <li><strong>Carregue o bot PRIMEIRO</strong> (código abaixo)</li>
+                <li><strong>Use as ferramentas</strong> para criar/converter sua imagem</li>
+                <li><strong>Cole o script gerado</strong> no console</li>
+                <li><strong>Execute wplaceBot.start()</strong> para começar a desenhar</li>
             </ol>
+        </div>
+
+        <div class="step" style="background: #fff3cd; border-left-color: #ffc107;">
+            <h3>⚠️ IMPORTANTE - Carregar Bot Primeiro</h3>
+            <p><strong>ANTES de usar qualquer ferramenta, você DEVE carregar o bot no console do wplace.live:</strong></p>
+            <code style="background: #2d3748; color: #e2e8f0; padding: 15px; display: block; margin: 10px 0; border-radius: 4px; font-family: monospace;">
+fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
+            </code>
+            <p>✅ Aguarde ver a mensagem "🎨 WPlace Bot Carregado!" e o painel aparecer no canto da tela.</p>
         </div>
         
         <div class="buttons">
             <a href="image-converter.html" class="btn">🔧 Abrir Conversor</a>
+            <a href="pixel-editor.html" class="btn" style="background: #9C27B0;">🎨 Editor de Pixel Art</a>
             <a href="wplace-bot.js" class="btn secondary" download>📥 Baixar Bot</a>
         </div>
         
@@ -116,7 +127,12 @@
             </div>
             
             <div class="feature">
-                <h4>🎯 Redimensionamento Inteligente</h4>
+                <h4>� Editor de Pixel Art</h4>
+                <p>Desenhe diretamente na tela com ferramentas profissionais</p>
+            </div>
+            
+            <div class="feature">
+                <h4>�🎯 Redimensionamento Inteligente</h4>
                 <p>Redimensiona automaticamente mantendo proporções</p>
             </div>
             
@@ -134,29 +150,34 @@
                 <h4>👀 Preview em Tempo Real</h4>
                 <p>Veja como ficará sua imagem antes de gerar o script</p>
             </div>
-            
-            <div class="feature">
-                <h4>📜 Script Pronto</h4>
-                <p>Gera código completo pronto para colar no console</p>
-            </div>
         </div>
         
         <div class="step">
             <h3>⚡ Início Rápido</h3>
-            <p>1. Cole este código no console do wplace.live:</p>
-            <code style="background: #f0f0f0; padding: 10px; display: block; margin: 10px 0; border-radius: 4px;">
-                fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
+            <p><strong>1. Abra o wplace.live e pressione F12 (Console)</strong></p>
+            <p><strong>2. Cole este código PRIMEIRO para carregar o bot:</strong></p>
+            <code style="background: #2d3748; color: #e2e8f0; padding: 15px; display: block; margin: 10px 0; border-radius: 4px; font-family: monospace; word-break: break-all;">
+fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
             </code>
-            <p>2. Use o painel de controle que aparecerá ou abra o conversor para suas imagens!</p>
+            <p><strong>3. Aguarde o painel aparecer, então escolha uma opção:</strong></p>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li>🖼️ <strong>Upload direto:</strong> Clique "📁 Carregar Imagem" no painel</li>
+                <li>🔧 <strong>Conversor:</strong> Clique "🔧 Conversor" para imagens existentes</li>
+                <li>🎨 <strong>Editor:</strong> Clique "🎨 Editor" para desenhar do zero</li>
+                <li>❤️ <strong>Teste rápido:</strong> Digite <code>wplaceBot.loadHeartImage(); wplaceBot.start();</code></li>
+            </ul>
         </div>
         
         <div class="step">
             <h3>🎯 Dicas Importantes</h3>
             <ul style="text-align: left;">
-                <li><strong>Tamanho</strong>: Recomendamos máximo 50x50 pixels para desenhos rápidos</li>
-                <li><strong>Cores</strong>: Use "Paleta Limitada" para melhor compatibilidade</li>
-                <li><strong>Delay</strong>: Mínimo 1000ms entre pixels para evitar sobrecarga</li>
-                <li><strong>Posição</strong>: Verifique se há espaço livre no canvas antes de iniciar</li>
+                <li><strong>⚠️ SEMPRE carregue o bot ANTES</strong> de usar qualquer ferramenta</li>
+                <li><strong>Console:</strong> F12 → aba "Console" (Chrome/Firefox/Edge)</li>
+                <li><strong>Posição:</strong> Configure X e Y onde quer começar (ex: 100, 100)</li>
+                <li><strong>Tamanho:</strong> Máximo 50x50 pixels para desenhos rápidos</li>
+                <li><strong>Delay:</strong> Mínimo 1000ms entre pixels (1 segundo)</li>
+                <li><strong>Teste:</strong> Comece com imagens pequenas primeiro</li>
+                <li><strong>Parar:</strong> Digite <code>wplaceBot.stop()</code> para parar</li>
             </ul>
         </div>
     </div>

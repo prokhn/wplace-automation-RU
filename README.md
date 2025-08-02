@@ -2,20 +2,58 @@
 
 Bot para automatizar a criação de desenhos no site wplace.live.
 
-## 🚀 Como Usar
+## 🚀 Como Usar (Passo-a-Passo)
 
-### Método 1: Console do Navegador (Recomendado)
+### **Passo 1: Preparação**
+1. **Abra** [wplace.live](https://wplace.live) no navegador
+2. **Pressione** `F12` para abrir o Console (ou Ctrl+Shift+I)
+3. **Clique** na aba "Console"
 
-1. **Abra o site**: Acesse [wplace.live](https://wplace.live)
-2. **Abra o Console**: Pressione `F12` e vá para a aba "Console"
-3. **Cole o script**: Copie todo o conteúdo do arquivo `wplace-bot.js` e cole no console
-4. **Pressione Enter**: O bot será carregado e um painel de controle aparecerá no canto superior direito
+### **Passo 2: Carregar o Bot** ⚠️ **OBRIGATÓRIO**
+**Cole este código no console e pressione Enter:**
+```javascript
+fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
+```
 
-### Método 2: Bookmarklet
+**Aguarde ver:**
+- ✅ Mensagem "🎨 WPlace Bot Carregado!"
+- ✅ Painel de controle no canto superior direito
 
-1. Crie um novo bookmark no seu navegador
-2. Como URL, cole: `javascript:(function(){fetch('https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/wplace-bot.js').then(r=>r.text()).then(eval)})();`
-3. Quando estiver no wplace.live, clique no bookmark
+### **Passo 3: Escolha Seu Método**
+
+#### **🖼️ Opção A: Upload Direto (Mais Fácil)**
+1. Clique **"📁 Carregar Imagem"** no painel
+2. Selecione sua imagem
+3. Configure posição (X, Y)
+4. Clique **"▶️ Iniciar"**
+
+#### **🔧 Opção B: Conversor Avançado**
+1. Clique **"🔧 Conversor"** no painel
+2. Arraste sua imagem
+3. Configure opções
+4. Gere e copie o script
+5. Cole no console
+
+#### **🎨 Opção C: Editor de Pixel Art**
+1. Clique **"🎨 Editor"** no painel
+2. Desenhe diretamente
+3. Copie o script gerado
+4. Cole no console
+
+#### **❤️ Opção D: Teste Rápido**
+```javascript
+wplaceBot.loadHeartImage();
+wplaceBot.setStartPosition(100, 100);
+wplaceBot.start();
+```
+
+### **Controles Básicos**
+```javascript
+wplaceBot.start();    // Iniciar desenho
+wplaceBot.stop();     // Parar desenho
+wplaceBot.setStartPosition(x, y);  // Definir posição
+wplaceBot.setDelay(1000);          // Definir velocidade
+```
 
 ## 🎮 Como Usar o Bot
 
@@ -48,6 +86,20 @@ O bot cria um painel de controle no canto superior direito com:
 4. Clique em "🔄 Converter Imagem" para ver o preview
 5. Clique em "📝 Gerar Script" para obter o código
 6. Copie e cole o script no console do wplace.live
+
+#### 🆕 Método 3: Editor de Pixel Art
+1. Clique em "🎨 Editor" no painel ou abra `pixel-editor.html`
+2. **Desenhe diretamente** na tela usando:
+   - **🖌️ Pincel**: Desenhar pixels individuais
+   - **🧽 Borracha**: Apagar pixels
+   - **🪣 Balde**: Preencher áreas
+   - **🎯 Conta-gotas**: Selecionar cores existentes
+   - **📏 Linha**: Desenhar linhas retas
+   - **⬜ Retângulo**: Criar formas retangulares
+3. **Configure o canvas**: Tamanho, cores, zoom
+4. **Visualize em tempo real**: Grade, estatísticas, preview
+5. **Gere o script** automaticamente conforme desenha
+6. **Exporte** em múltiplos formatos ou salve como PNG
 
 ### Comandos no Console
 
@@ -215,31 +267,69 @@ Este script é fornecido "como está" para fins educacionais. Use por sua própr
 
 - `wplace-bot.js` - Script principal do bot com todas as funcionalidades
 - `wplace-bot-minified.js` - Versão minificada do bot
-- `image-converter.html` - **🆕 Conversor web de imagens** (Interface completa)
+- `image-converter.html` - **🔧 Conversor web de imagens** (Interface completa)
+- `pixel-editor.html` - **🆕 Editor de Pixel Art** (Desenhe diretamente na tela!)
 - `demo-converter.html` - Página de demonstração e instruções
 - `custom-images.md` - Exemplos e guia para imagens personalizadas
 - `README.md` - Este arquivo com todas as instruções
 
-## 🆕 Novidades - Importação de Imagens
+## 🆕 Novidades - Editor de Pixel Art
 
-### Conversor Web Completo
-O arquivo `image-converter.html` é uma ferramenta completa para converter suas imagens:
+### 🎨 Editor Completo de Pixel Art
+O arquivo `pixel-editor.html` é um editor completo onde você pode **desenhar diretamente**:
 
-- **🖼️ Suporte completo**: PNG, JPG, JPEG, GIF
-- **🎯 Redimensionamento inteligente**: Mantém proporções automaticamente  
-- **🎨 Três modos de cor**:
-  - Paleta Limitada (recomendado)
-  - Cores Completas
-  - Escala de Cinza
-- **👀 Preview em tempo real**: Veja o resultado antes de gerar
-- **📜 Múltiplos formatos de saída**: Script completo, função personalizada ou dados puros
-- **📊 Estatísticas detalhadas**: Tempo estimado, cores únicas, etc.
+#### **🛠️ Ferramentas Disponíveis**:
+- **�️ Pincel**: Desenhar pixel por pixel
+- **🧽 Borracha**: Apagar pixels específicos
+- **🪣 Balde**: Preencher áreas com uma cor
+- **🎯 Conta-gotas**: Selecionar cores existentes no desenho
+- **📏 Linha**: Desenhar linhas retas perfeitas
+- **⬜ Retângulo**: Criar formas retangulares
 
-### Upload Direto no Bot
-- Novo botão "📁 Carregar Imagem" no painel de controle
-- Upload direto de imagens pequenas
-- Conversão automática
+#### **🎨 Sistema de Cores**:
+- **Paleta de 30 cores** otimizada para wplace.live
+- **Seletor de cor personalizado** para cores específicas
+- **Preview em tempo real** de todas as cores
+
+#### **📐 Controles de Canvas**:
+- **Tamanho configurável**: De 5x5 até 100x100 pixels
+- **Zoom ajustável**: 1x até 5x para precisão
+- **Grade opcional**: Para melhor visualização
+- **Histórico completo**: Desfazer/Refazer ilimitado
+
+#### **📊 Recursos Avançados**:
+- **Importação de imagens**: Arraste imagens existentes
+- **Exportação PNG**: Salve seu trabalho em alta resolução
+- **Estatísticas em tempo real**: Pixels, cores, tempo estimado
+- **Múltiplos formatos de script**: Script completo, função ou dados puros
+
+#### **⚡ Geração Automática**:
+- **Script gerado em tempo real** conforme você desenha
+- **Três formatos de saída**:
+  - Script completo pronto para usar
+  - Função personalizada
+  - Dados puros da imagem
+- **Cópia com um clique** para área de transferência
 
 ---
 
-**🎉 Agora você pode transformar qualquer imagem em pixel art para o wplace.live!**
+**🎉 Agora você tem 3 formas diferentes de criar arte para o wplace.live:**
+
+### 1. 📁 **Upload Direto** - *Rápido e Simples*
+- Clique em "📁 Carregar Imagem" no painel
+- Selecione qualquer imagem
+- Pronto para usar!
+
+### 2. 🔧 **Conversor Avançado** - *Máximo Controle*
+- Importe qualquer formato de imagem
+- Configure tamanho, cores e otimizações
+- Preview completo antes de gerar
+- Múltiplos formatos de saída
+
+### 3. 🎨 **Editor de Pixel Art** - *Criação Original*
+- Desenhe diretamente na tela
+- Ferramentas profissionais (pincel, balde, linha, etc.)
+- Geração de script em tempo real
+- Sistema completo de cores e zoom
+
+**✨ Todos os métodos geram scripts prontos para colar no console do wplace.live!**

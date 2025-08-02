@@ -451,7 +451,8 @@ class WPlaceBot {
             <div style="margin-bottom: 10px;">
                 <input type="file" id="imageInput" accept="image/*" style="display: none;">
                 <button id="loadCustom" style="background: #FF9800; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">📁 Carregar Imagem</button>
-                <button id="openConverter" style="background: #9C27B0; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 11px;">🔧 Conversor</button>
+                <button id="openConverter" style="background: #9C27B0; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">🔧 Conversor</button>
+                <button id="openEditor" style="background: #E91E63; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 11px;">🎨 Editor</button>
             </div>
             <div style="margin-bottom: 10px;">
                 <button id="startBot" style="background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; margin-right: 5px;">▶️ Iniciar</button>
@@ -528,6 +529,11 @@ class WPlaceBot {
         document.getElementById('openConverter').addEventListener('click', () => {
             const converterPath = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'image-converter.html';
             window.open(converterPath, '_blank');
+        });
+
+        document.getElementById('openEditor').addEventListener('click', () => {
+            const editorPath = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'pixel-editor.html';
+            window.open(editorPath, '_blank');
         });
     }
 }
