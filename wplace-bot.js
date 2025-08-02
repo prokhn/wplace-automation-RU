@@ -299,6 +299,117 @@ class WPlaceBot {
         console.log(`⏱️ Delay definido: ${ms}ms`);
     }
 
+    // Carrega imagem a partir de dados de pixels
+    loadImageFromData(pixelData, name = 'Custom Image') {
+        if (!Array.isArray(pixelData)) {
+            console.error('❌ Dados da imagem devem ser um array de objetos {x, y, color}');
+            return false;
+        }
+
+        // Validar formato dos dados
+        const isValidData = pixelData.every(pixel => 
+            typeof pixel === 'object' && 
+            typeof pixel.x === 'number' && 
+            typeof pixel.y === 'number' && 
+            typeof pixel.color === 'string'
+        );
+
+        if (!isValidData) {
+            console.error('❌ Formato inválido. Cada pixel deve ter {x, y, color}');
+            return false;
+        }
+
+        this.pixels = pixelData.slice(); // Cópia dos dados
+        console.log(`✅ ${name} carregada: ${pixelData.length} pixels`);
+        
+        // Calcular dimensões da imagem
+        const maxX = Math.max(...pixelData.map(p => p.x));
+        const maxY = Math.max(...pixelData.map(p => p.y));
+        console.log(`📐 Dimensões: ${maxX + 1}x${maxY + 1} pixels`);
+        
+        // Contar cores únicas
+        const uniqueColors = [...new Set(pixelData.map(p => p.color))];
+        console.log(`🎨 Cores únicas: ${uniqueColors.length}`);
+
+        return true;
+    }
+
+    // Carrega imagem a partir de URL de dados (data URL)
+    async loadImageFromUrl(imageUrl, maxWidth = 50, maxHeight = 50) {
+        try {
+            console.log('🔄 Carregando imagem da URL...');
+            
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            
+            return new Promise((resolve, reject) => {
+                img.onload = () => {
+                    try {
+                        const pixelData = this.processImageToPixels(img, maxWidth, maxHeight);
+                        this.loadImageFromData(pixelData, 'Image from URL');
+                        resolve(true);
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+                
+                img.onerror = () => {
+                    reject(new Error('Erro ao carregar imagem da URL'));
+                };
+                
+                img.src = imageUrl;
+            });
+        } catch (error) {
+            console.error('❌ Erro ao carregar imagem:', error);
+            return false;
+        }
+    }
+
+    // Processa uma imagem HTML para dados de pixels
+    processImageToPixels(img, maxWidth, maxHeight) {
+        // Calcular dimensões mantendo proporção
+        const scale = Math.min(maxWidth / img.width, maxHeight / img.height);
+        const width = Math.floor(img.width * scale);
+        const height = Math.floor(img.height * scale);
+
+        // Criar canvas temporário
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = width;
+        canvas.height = height;
+
+        // Desenhar imagem redimensionada
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Obter dados dos pixels
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+
+        const pixels = [];
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                const r = data[index];
+                const g = data[index + 1];
+                const b = data[index + 2];
+                const a = data[index + 3];
+
+                // Ignorar pixels transparentes
+                if (a < 128) continue;
+
+                const color = '#' + [r, g, b].map(x => {
+                    const hex = x.toString(16);
+                    return hex.length === 1 ? '0' + hex : hex;
+                }).join('');
+
+                pixels.push({ x, y, color });
+            }
+        }
+
+        return pixels;
+    }
+
     // Cria painel de controle
     createControlPanel() {
         // Remove painel anterior se existir
@@ -334,8 +445,13 @@ class WPlaceBot {
                 <label>Delay (ms): <input type="number" id="delay" value="1000" style="width: 80px;"></label>
             </div>
             <div style="margin-bottom: 10px;">
-                <button id="loadHeart" style="margin-right: 5px;">❤️ Coração</button>
-                <button id="loadSmiley">😊 Smiley</button>
+                <button id="loadHeart" style="margin-right: 5px; margin-bottom: 5px;">❤️ Coração</button>
+                <button id="loadSmiley" style="margin-bottom: 5px;">😊 Smiley</button>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <button id="loadCustom" style="background: #FF9800; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">📁 Carregar Imagem</button>
+                <button id="openConverter" style="background: #9C27B0; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 11px;">🔧 Conversor</button>
             </div>
             <div style="margin-bottom: 10px;">
                 <button id="startBot" style="background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; margin-right: 5px;">▶️ Iniciar</button>
@@ -380,6 +496,39 @@ class WPlaceBot {
             this.stop();
             document.getElementById('status').textContent = 'Status: Parado';
         });
+
+        document.getElementById('loadCustom').addEventListener('click', () => {
+            document.getElementById('imageInput').click();
+        });
+
+        document.getElementById('imageInput').addEventListener('change', async (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                try {
+                    document.getElementById('status').textContent = 'Status: Carregando imagem...';
+                    
+                    const reader = new FileReader();
+                    reader.onload = async (event) => {
+                        try {
+                            await this.loadImageFromUrl(event.target.result, 50, 50);
+                            document.getElementById('status').textContent = 'Status: Imagem carregada!';
+                        } catch (error) {
+                            console.error('Erro ao processar imagem:', error);
+                            document.getElementById('status').textContent = 'Status: Erro ao carregar imagem';
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                } catch (error) {
+                    console.error('Erro ao ler arquivo:', error);
+                    document.getElementById('status').textContent = 'Status: Erro ao ler arquivo';
+                }
+            }
+        });
+
+        document.getElementById('openConverter').addEventListener('click', () => {
+            const converterPath = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'image-converter.html';
+            window.open(converterPath, '_blank');
+        });
     }
 }
 
@@ -396,8 +545,13 @@ Comandos disponíveis:
 - wplaceBot.setDelay(ms) - Define delay entre cliques  
 - wplaceBot.loadHeartImage() - Carrega imagem de coração
 - wplaceBot.loadSmileyImage() - Carrega imagem de smiley
+- wplaceBot.loadImageFromData(pixelData, name) - Carrega imagem de dados
+- wplaceBot.loadImageFromUrl(url, maxWidth, maxHeight) - Carrega imagem de URL
 - wplaceBot.start() - Inicia o bot
 - wplaceBot.stop() - Para o bot
+
+🔧 Conversor de Imagem:
+Use o painel de controle ou abra image-converter.html para converter suas próprias imagens!
 
 Ou use o painel de controle que apareceu no canto superior direito!
 `);

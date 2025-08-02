@@ -25,8 +25,29 @@ O bot cria um painel de controle no canto superior direito com:
 
 - **Posição X/Y**: Define onde o desenho começará
 - **Delay**: Tempo entre cada pixel (em milissegundos)
-- **Botões de imagem**: Carrega imagens pré-definidas
+- **Botões de imagem**: Carrega imagens pré-definidas (Coração, Smiley)
+- **Carregar Imagem**: Permite carregar suas próprias imagens (PNG, JPG, etc.)
+- **Conversor**: Abre a ferramenta de conversão avançada de imagens
 - **Iniciar/Parar**: Controla a execução do bot
+
+### 🖼️ Importando Suas Próprias Imagens
+
+#### Método 1: Upload Direto no Painel
+1. Clique em "📁 Carregar Imagem" no painel de controle
+2. Selecione sua imagem (PNG, JPG, GIF)
+3. A imagem será automaticamente redimensionada e carregada
+
+#### Método 2: Conversor Avançado
+1. Clique em "🔧 Conversor" no painel ou abra `image-converter.html`
+2. Arraste sua imagem ou clique para selecionar
+3. Configure as opções:
+   - **Tamanho máximo**: Largura e altura em pixels
+   - **Modo de cor**: Paleta limitada, cores completas ou escala de cinza
+   - **Posição inicial**: Onde começar a desenhar
+   - **Delay**: Tempo entre cada pixel
+4. Clique em "🔄 Converter Imagem" para ver o preview
+5. Clique em "📝 Gerar Script" para obter o código
+6. Copie e cole o script no console do wplace.live
 
 ### Comandos no Console
 
@@ -41,12 +62,60 @@ wplaceBot.setDelay(2000);
 wplaceBot.loadHeartImage();    // Coração 7x7
 wplaceBot.loadSmileyImage();   // Smiley 7x7
 
+// Carrega imagem de dados personalizados
+const minhosPixels = [
+    { x: 0, y: 0, color: '#FF0000' },
+    { x: 1, y: 0, color: '#00FF00' },
+    // ... mais pixels
+];
+wplaceBot.loadImageFromData(minhosPixels, 'Minha Imagem');
+
+// Carrega imagem de URL (data URL ou URL externa)
+wplaceBot.loadImageFromUrl('data:image/png;base64,...', 50, 50);
+
 // Controla o bot
 wplaceBot.start();  // Inicia
 wplaceBot.stop();   // Para
 ```
 
 ## 🎨 Imagens Disponíveis
+
+### Imagens Pré-definidas
+
+- **❤️ Coração**: 7x7 pixels em vermelho
+- **😊 Smiley**: 7x7 pixels amarelo com rosto sorridente
+
+### 🆕 Suas Próprias Imagens
+
+Agora você pode importar qualquer imagem! O bot suporta:
+
+- **Formatos**: PNG, JPG, JPEG, GIF
+- **Redimensionamento automático**: Suas imagens são redimensionadas para o tamanho ideal
+- **Otimização de cores**: Converte para as cores disponíveis no wplace.live
+- **Três modos de cor**:
+  - **Paleta Limitada**: Usa apenas cores comuns do wplace
+  - **Cores Completas**: Mantém cores originais (pode não ter correspondência exata)
+  - **Escala de Cinza**: Converte para preto e branco
+
+### Como Converter Suas Imagens
+
+1. **Abra o Conversor**: Use `image-converter.html` ou clique no botão "🔧 Conversor" no painel
+2. **Importe sua Imagem**: Arraste ou selecione o arquivo
+3. **Configure as Opções**:
+   - Tamanho máximo (recomendado: 50x50 para imagens pequenas)
+   - Modo de cor (recomendado: Paleta Limitada)
+   - Posição inicial no canvas
+   - Delay entre pixels
+4. **Visualize o Resultado**: Veja como ficará sua imagem pixelizada
+5. **Gere o Script**: Obtenha o código pronto para usar
+6. **Use no WPlace**: Cole o script no console do wplace.live
+
+### ⚠️ Dicas Importantes
+
+- **Tamanho**: Imagens muito grandes demoram muito para desenhar
+- **Delay**: Use pelo menos 1000ms entre pixels para evitar sobrecarga
+- **Cores**: Modo "Paleta Limitada" garante melhor compatibilidade
+- **Posição**: Verifique se há espaço suficiente no canvas antes de iniciar
 
 ### Coração (7x7)
 ```
@@ -141,3 +210,36 @@ wplaceBot.loadSimpleImage(imageData, 3, 3);
 ## 📝 Licença
 
 Este script é fornecido "como está" para fins educacionais. Use por sua própria conta e risco.
+
+## 📁 Arquivos do Projeto
+
+- `wplace-bot.js` - Script principal do bot com todas as funcionalidades
+- `wplace-bot-minified.js` - Versão minificada do bot
+- `image-converter.html` - **🆕 Conversor web de imagens** (Interface completa)
+- `demo-converter.html` - Página de demonstração e instruções
+- `custom-images.md` - Exemplos e guia para imagens personalizadas
+- `README.md` - Este arquivo com todas as instruções
+
+## 🆕 Novidades - Importação de Imagens
+
+### Conversor Web Completo
+O arquivo `image-converter.html` é uma ferramenta completa para converter suas imagens:
+
+- **🖼️ Suporte completo**: PNG, JPG, JPEG, GIF
+- **🎯 Redimensionamento inteligente**: Mantém proporções automaticamente  
+- **🎨 Três modos de cor**:
+  - Paleta Limitada (recomendado)
+  - Cores Completas
+  - Escala de Cinza
+- **👀 Preview em tempo real**: Veja o resultado antes de gerar
+- **📜 Múltiplos formatos de saída**: Script completo, função personalizada ou dados puros
+- **📊 Estatísticas detalhadas**: Tempo estimado, cores únicas, etc.
+
+### Upload Direto no Bot
+- Novo botão "📁 Carregar Imagem" no painel de controle
+- Upload direto de imagens pequenas
+- Conversão automática
+
+---
+
+**🎉 Agora você pode transformar qualquer imagem em pixel art para o wplace.live!**

@@ -1,8 +1,23 @@
-# Como Criar Imagens Personalizadas para o WPlace Bot
+# 🖼️ Exemplos de Imagens Personalizadas
+
+Este arquivo contém exemplos de como usar imagens convertidas no WPlace Bot, além de métodos para criar suas próprias imagens.
 
 ## 🎨 Métodos para Criar Imagens
 
-### 1. Método Manual (Simples)
+### 1. 🆕 Conversor Web Automático (Recomendado)
+- Abra `image-converter.html` no navegador
+- Arraste ou selecione sua imagem (PNG, JPG, GIF)
+- Configure tamanho máximo e modo de cor
+- Visualize o resultado em tempo real
+- Gere o script pronto para usar
+- Copie e cole no console do wplace.live
+
+### 2. 📁 Upload Direto no Painel
+- Use o botão "📁 Carregar Imagem" no painel do bot
+- Selecione sua imagem
+- Será automaticamente redimensionada e carregada
+
+### 3. Método Manual (Para Pixel Art Simples)
 
 ```javascript
 // Exemplo: Cruz 5x5
