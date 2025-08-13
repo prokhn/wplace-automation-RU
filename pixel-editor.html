@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de Pixel Art - WPlace Bot</title>
+    <title>Редактор пиксель-арта - WPlace Bot</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -298,56 +298,56 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎨 Editor de Pixel Art - WPlace Bot</h1>
-            <p>Desenhe diretamente na tela e gere o script automaticamente!</p>
+            <h1>🎨 Редактор пиксель-арта - WPlace Bot</h1>
+            <p>Рисуйте прямо на холсте и автоматически генерируйте скрипт!</p>
         </div>
 
         <div class="main-content">
-            <!-- Sidebar Esquerda - Ferramentas -->
+            <!-- Левая боковая панель - Инструменты -->
             <div class="sidebar">
-                <h3>🛠️ Ferramentas</h3>
+                <h3>🛠️ Инструменты</h3>
                 
                 <div class="tools">
-                    <button class="tool-btn active" data-tool="brush">🖌️ Pincel</button>
-                    <button class="tool-btn" data-tool="eraser">🧽 Borracha</button>
-                    <button class="tool-btn" data-tool="bucket">🪣 Balde</button>
-                    <button class="tool-btn" data-tool="picker">🎯 Conta-gotas</button>
-                    <button class="tool-btn" data-tool="line">📏 Linha</button>
-                    <button class="tool-btn" data-tool="rectangle">⬜ Retângulo</button>
+                    <button class="tool-btn active" data-tool="brush">🖌️ Кисть</button>
+                    <button class="tool-btn" data-tool="eraser">🧽 Ластик</button>
+                    <button class="tool-btn" data-tool="bucket">🪣 Заливка</button>
+                    <button class="tool-btn" data-tool="picker">🎯 Пипетка</button>
+                    <button class="tool-btn" data-tool="line">📏 Линия</button>
+                    <button class="tool-btn" data-tool="rectangle">⬜ Прямоугольник</button>
                 </div>
 
-                <h3>🎨 Paleta de Cores</h3>
+                <h3>🎨 Палитра цветов</h3>
                 <div class="color-palette" id="colorPalette"></div>
                 
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Cor Personalizada:</label>
+                    <label style="display: block Regulation: block; margin-bottom: 5px; font-weight: bold;">Пользовательский цвет:</label>
                     <input type="color" id="customColor" value="#000000" style="width: 100%; height: 40px; border: none; border-radius: 5px;">
                 </div>
 
-                <h3>📐 Tamanho do Canvas</h3>
+                <h3>📐 Размер холста</h3>
                 <div class="size-controls">
-                    <label>Largura:</label>
+                    <label>Ширина:</label>
                     <input type="number" id="canvasWidth" value="20" min="5" max="100">
                     
-                    <label>Altura:</label>
+                    <label>Высота:</label>
                     <input type="number" id="canvasHeight" value="20" min="5" max="100">
                     
-                    <button class="control-btn primary" onclick="resizeCanvas()">📏 Redimensionar</button>
+                    <button class="control-btn primary" onclick="resizeCanvas()">📏 Изменить размер</button>
                 </div>
             </div>
 
-            <!-- Canvas Central -->
+            <!-- Центральный холст -->
             <div class="canvas-container">
                 <div class="canvas-controls">
-                    <button class="control-btn secondary" onclick="clearCanvas()">🗑️ Limpar</button>
-                    <button class="control-btn secondary" onclick="undoAction()">↶ Desfazer</button>
-                    <button class="control-btn secondary" onclick="redoAction()">↷ Refazer</button>
-                    <button class="control-btn primary" onclick="generateScript()">📜 Gerar Script</button>
+                    <button class="control-btn secondary" onclick="clearCanvas()">🗑️ Очистить</button>
+                    <button class="control-btn secondary" onclick="undoAction()">↶ Отменить</button>
+                    <button class="control-btn secondary" onclick="redoAction()">↷ Повторить</button>
+                    <button class="control-btn primary" onclick="generateScript()">📜 Сгенерировать скрипт</button>
                     <label class="control-btn secondary" style="cursor: pointer;">
-                        📁 Importar
+                        📁 Импортировать
                         <input type="file" id="importImage" accept="image/*" style="display: none;">
                     </label>
-                    <button class="control-btn secondary" onclick="exportPNG()">💾 Exportar PNG</button>
+                    <button class="control-btn secondary" onclick="exportPNG()">💾 Экспортировать PNG</button>
                 </div>
                 
                 <div style="position: relative;">
@@ -356,64 +356,64 @@
                 
                 <div style="margin-top: 15px; text-align: center;">
                     <label style="margin-right: 15px;">
-                        <input type="checkbox" id="showGrid" checked> Mostrar Grade
+                        <input type="checkbox" id="showGrid" checked> Показать сетку
                     </label>
                     <label>
-                        Zoom: <input type="range" id="zoomSlider" min="1" max="5" value="2" style="width: 100px;">
+                        Масштаб: <input type="range" id="zoomSlider" min="1" max="5" value="2" style="width: 100px;">
                         <span id="zoomValue">2x</span>
                     </label>
                 </div>
             </div>
 
-            <!-- Sidebar Direita - Configurações e Export -->
+            <!-- Правая боковая панель - Настройки и экспорт -->
             <div class="sidebar">
-                <h3>⚙️ Configurações WPlace</h3>
+                <h3>⚙️ Настройки WPlace</h3>
                 <div class="wplace-settings">
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Posição X Inicial:</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Начальная позиция X:</label>
                     <input type="number" id="startX" value="100" min="0">
                     
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Posição Y Inicial:</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Начальная позиция Y:</label>
                     <input type="number" id="startY" value="100" min="0">
                     
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Delay entre pixels (ms):</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Задержка между пикселями (мс):</label>
                     <input type="number" id="pixelDelay" value="1000" min="100" max="10000">
                     
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Nome da Imagem:</label>
-                    <input type="text" id="imageName" value="meu_desenho" placeholder="nome_da_imagem">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Имя изображения:</label>
+                    <input type="text" id="imageName" value="мой_рисунок" placeholder="имя_изображения">
                 </div>
 
                 <div class="stats" id="drawingStats">
-                    <strong>📊 Estatísticas:</strong><br>
-                    Pixels: <span id="pixelCount">0</span><br>
-                    Cores: <span id="colorCount">0</span><br>
-                    Tamanho: <span id="canvasSize">20x20</span><br>
-                    Tempo estimado: <span id="estimatedTime">0s</span>
+                    <strong>📊 Статистика:</strong><br>
+                    Пикселей: <span id="pixelCount">0</span><br>
+                    Цветов: <span id="colorCount">0</span><br>
+                    Размер: <span id="canvasSize">20x20</span><br>
+                    Примерное время: <span id="estimatedTime">0с</span>
                 </div>
 
-                <h3>📋 Exportar Script</h3>
+                <h3>📋 Экспорт скрипта</h3>
                 <div class="export-tabs">
-                    <button class="export-tab active" onclick="showExportTab('script')">Script</button>
-                    <button class="export-tab" onclick="showExportTab('data')">Dados</button>
-                    <button class="export-tab" onclick="showExportTab('function')">Função</button>
+                    <button class="export-tab active" onclick="showExportTab('script')">Скрипт</button>
+                    <button class="export-tab" onclick="showExportTab('data')">Данные</button>
+                    <button class="export-tab" onclick="showExportTab('function')">Функция</button>
                 </div>
                 
                 <div class="export-content" id="exportOutput">
-                    Desenhe algo no canvas para gerar o script!
+                    Нарисуйте что-нибудь на холсте, чтобы сгенерировать скрипт!
                 </div>
                 
-                <button class="copy-btn" onclick="copyToClipboard()">📋 Copiar Código</button>
+                <button class="copy-btn" onclick="copyToClipboard()">📋 Копировать код</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Variáveis globais
+        // Глобальные переменные
         let canvas = document.getElementById('pixelCanvas');
         let ctx = canvas.getContext('2d');
         let currentTool = 'brush';
         let currentColor = '#000000';
         let isDrawing = false;
-        let pixels = new Map(); // Armazena os pixels desenhados
+        let pixels = new Map(); // Хранит нарисованные пиксели
         let undoStack = [];
         let redoStack = [];
         let gridSize = 20;
@@ -422,7 +422,7 @@
         let canvasPixelHeight = 20;
         let exportMode = 'script';
 
-        // Paleta de cores padrão
+        // Стандартная палитра цветов
         const defaultPalette = [
             '#FFFFFF', '#E4E4E4', '#888888', '#222222', '#000000',
             '#FFA7D1', '#E50000', '#E59500', '#A06A42', '#E5D900',
@@ -432,7 +432,7 @@
             '#008000', '#000080', '#808080', '#FF6B6B', '#4ECDC4'
         ];
 
-        // Inicialização
+        // Инициализация
         function init() {
             setupCanvas();
             setupColorPalette();
@@ -458,34 +458,34 @@
                 palette.appendChild(swatch);
             });
             
-            // Aguardar um momento para o DOM ser atualizado antes de selecionar a cor
+            // Подождать, пока DOM обновится, перед выбором цвета
             setTimeout(() => {
                 selectColor('#000000');
             }, 100);
         }
 
         function setupEventListeners() {
-            // Canvas events
+            // События холста
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mousemove', draw);
             canvas.addEventListener('mouseup', stopDrawing);
             canvas.addEventListener('mouseleave', stopDrawing);
             canvas.addEventListener('contextmenu', e => e.preventDefault());
 
-            // Tool selection
+            // Выбор инструмента
             document.querySelectorAll('.tool-btn').forEach(btn => {
                 btn.addEventListener('click', () => selectTool(btn.dataset.tool));
             });
 
-            // Custom color
+            // Пользовательский цвет
             document.getElementById('customColor').addEventListener('change', (e) => {
                 selectColor(e.target.value);
             });
 
-            // Import image
+            // Импорт изображения
             document.getElementById('importImage').addEventListener('change', handleImageImport);
 
-            // Grid toggle
+            // Переключение сетки
             document.getElementById('showGrid').addEventListener('change', (e) => {
                 if (e.target.checked) {
                     drawGrid();
@@ -494,14 +494,14 @@
                 }
             });
 
-            // Zoom
+            // Масштаб
             document.getElementById('zoomSlider').addEventListener('input', (e) => {
                 zoom = parseInt(e.target.value);
                 document.getElementById('zoomValue').textContent = zoom + 'x';
                 resizeCanvasDisplay();
             });
 
-            // Settings changes
+            // Изменение настроек
             ['startX', 'startY', 'pixelDelay', 'imageName'].forEach(id => {
                 document.getElementById(id).addEventListener('input', generateScript);
             });
@@ -512,7 +512,7 @@
             document.querySelectorAll('.tool-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
             
-            // Change cursor based on tool
+            // Изменение курсора в зависимости от инструмента
             switch(tool) {
                 case 'brush':
                     canvas.style.cursor = 'crosshair';
@@ -548,8 +548,8 @@
                         }
                     }
                 } catch (error) {
-                    // Ignore conversion errors for individual swatches
-                    console.warn('Erro ao converter cor do swatch:', error);
+                    // Игнорировать ошибки конверсии для отдельных образцов
+                    console.warn('Ошибка при конверсии цвета образца:', error);
                 }
             });
             document.getElementById('customColor').value = color;
@@ -564,15 +564,16 @@
             const y = Math.floor((e.clientY - rect.top) * scaleY);
             
             return { x: Math.max(0, Math.min(x, canvasPixelWidth - 1)), 
-                    y: Math.max(0, Math.min(y, canvasPixelHeight - 1)) };
+                    y: Math.max
+
+(0, Math.min(y, canvasPixelHeight - 1)) };
         }
 
         function startDrawing(e) {
             isDrawing = true;
             saveState();
             
-            const pos = getPixelCoords(e);
-            
+            const pos = getPixelCoords(ekeyboard_arrow_right
             switch(currentTool) {
                 case 'brush':
                 case 'eraser':
@@ -587,7 +588,7 @@
             }
         }
 
-        function draw(e) {
+        function draw(eხ
             if (!isDrawing || (currentTool !== 'brush' && currentTool !== 'eraser')) return;
             
             const pos = getPixelCoords(e);
@@ -655,11 +656,11 @@
         function redrawCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Fill background
+            // Заполнить фон
             ctx.fillStyle = '#FFFFFF';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Draw pixels
+            // Нарисовать пиксели
             const pixelWidth = canvas.width / canvasPixelWidth;
             const pixelHeight = canvas.height / canvasPixelHeight;
             
@@ -669,7 +670,7 @@
                 ctx.fillRect(x * pixelWidth, y * pixelHeight, pixelWidth, pixelHeight);
             });
             
-            // Draw grid if enabled
+            // Нарисовать сетку, если включено
             if (document.getElementById('showGrid').checked) {
                 drawGrid();
             }
@@ -683,14 +684,14 @@
             ctx.lineWidth = 1;
             ctx.beginPath();
             
-            // Vertical lines
+            // Вертикальные линии
             for (let x = 0; x <= canvasPixelWidth; x++) {
                 const xPos = x * pixelWidth;
                 ctx.moveTo(xPos, 0);
                 ctx.lineTo(xPos, canvas.height);
             }
             
-            // Horizontal lines
+            // Горизонтальные линии
             for (let y = 0; y <= canvasPixelHeight; y++) {
                 const yPos = y * pixelHeight;
                 ctx.moveTo(0, yPos);
@@ -774,12 +775,12 @@
             document.getElementById('colorCount').textContent = uniqueColors;
             document.getElementById('canvasSize').textContent = `${canvasPixelWidth}x${canvasPixelHeight}`;
             document.getElementById('estimatedTime').textContent = estimatedTime > 60 ? 
-                `${Math.floor(estimatedTime / 60)}m ${estimatedTime % 60}s` : `${estimatedTime}s`;
+                `${Math.floor(estimatedTime / 60)}м ${estimatedTime % 60}с` : `${estimatedTime}с`;
         }
 
         function generateScript() {
             if (pixels.size === 0) {
-                document.getElementById('exportOutput').textContent = 'Desenhe algo no canvas para gerar o script!';
+                document.getElementById('exportOutput').textContent = 'Нарисуйте что-нибудь на холсте, чтобы сгенерировать скрипт!';
                 return;
             }
             
@@ -791,7 +792,7 @@
             const startX = parseInt(document.getElementById('startX').value);
             const startY = parseInt(document.getElementById('startY').value);
             const delay = parseInt(document.getElementById('pixelDelay').value);
-            const imageName = document.getElementById('imageName').value.replace(/[^a-zA-Z0-9_]/g, '_') || 'meu_desenho';
+            const imageName = document.getElementById('imageName').value.replace(/[^a-zA-Z0-9_]/g, '_') || 'мой_рисунок';
             
             let output = '';
             
@@ -811,9 +812,9 @@
         }
 
         function generateFullScript(pixelData, startX, startY, delay, imageName) {
-            return `// Script gerado pelo Editor de Pixel Art - WPlace Bot
-// Desenho: ${imageName} (${canvasPixelWidth}x${canvasPixelHeight})
-// Pixels: ${pixelData.length} | Delay: ${delay}ms
+            return `// Скрипт сгенерирован редактором пиксель-арта - WPlace Bot
+// Рисунок: ${imageName} (${canvasPixelWidth}x${canvasPixelHeight})
+// Пикселей: ${pixelData.length} | Задержка: ${delay}мс
 
 const ${imageName}Data = [
 ${pixelData.map(p => `    { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).join(',\n')}
@@ -821,7 +822,7 @@ ${pixelData.map(p => `    { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).join('
 
 function load${imageName.charAt(0).toUpperCase() + imageName.slice(1)}() {
     if (typeof wplaceBot === 'undefined') {
-        console.error('❌ WPlace Bot não encontrado! Carregue o bot primeiro.');
+        console.error('❌ WPlace Bot не найден! Сначала загрузите бот.');
         return;
     }
     
@@ -829,37 +830,37 @@ function load${imageName.charAt(0).toUpperCase() + imageName.slice(1)}() {
     wplaceBot.setStartPosition(${startX}, ${startY});
     wplaceBot.setDelay(${delay});
     
-    console.log('✅ Desenho "${imageName}" carregado!');
-    console.log('📍 Posição: (${startX}, ${startY})');
-    console.log('⏱️ Delay: ${delay}ms');
-    console.log('🎨 Pixels: ${pixelData.length}');
+    console.log('✅ Рисунок "${imageName}" загружен!');
+    console.log('📍 Позиция: (${startX}, ${startY})');
+    console.log('⏱️ Задержка: ${delay}мс');
+    console.log('🎨 Пикселей: ${pixelData.length}');
     console.log('');
-    console.log('Para desenhar, use: wplaceBot.start()');
+    console.log('Для начала рисования используйте: wplaceBot.start()');
 }
 
-// Carregar automaticamente
+// Автозагрузка
 load${imageName.charAt(0).toUpperCase() + imageName.slice(1)}();
 
-// 🎨 Instruções:
-// 1. Cole este código no console do wplace.live
-// 2. Certifique-se de que o WPlace Bot está carregado
-// 3. Execute wplaceBot.start() para começar a desenhar`;
+// 🎨 Инструкции:
+// 1. Вставьте этот код в консоль на сайте wplace.live
+// 2. Убедитесь, что WPlace Bot загружен
+// 3. Выполните wplaceBot.start() для начала рисования`;
         }
 
         function generateDataOnly(pixelData, imageName) {
-            return `// Dados do desenho: ${imageName}
+            return `// Данные рисунка: ${imageName}
 const ${imageName}Data = [
 ${pixelData.map(p => `    { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).join(',\n')}
 ];
 
-// Informações:
-// Tamanho: ${canvasPixelWidth}x${canvasPixelHeight}
-// Pixels: ${pixelData.length}
-// Cores únicas: ${new Set(pixelData.map(p => p.color)).size}`;
+// Информация:
+// Размер: ${canvasPixelWidth}x${canvasPixelHeight}
+// Пикселей: ${pixelData.length}
+// Уникальных цветов: ${new Set(pixelData.map(p => p.color)).size}`;
         }
 
         function generateFunctionOnly(pixelData, imageName) {
-            return `// Função para carregar o desenho: ${imageName}
+            return `// Функция для загрузки рисунка: ${imageName}
 function load${imageName.charAt(0).toUpperCase() + imageName.slice(1)}() {
     const pixelData = [
 ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).join(',\n')}
@@ -867,13 +868,13 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
     
     if (typeof wplaceBot !== 'undefined') {
         wplaceBot.loadImageFromData(pixelData, '${imageName}');
-        console.log('✅ Desenho "${imageName}" carregado (${pixelData.length} pixels)');
+        console.log('✅ Рисунок "${imageName}" загружен (${pixelData.length} пикселей)');
     } else {
-        console.error('❌ WPlace Bot não encontrado!');
+        console.error('❌ WPlace Bot не найден!');
     }
 }
 
-// Para usar:
+// Для использования:
 // load${imageName.charAt(0).toUpperCase() + imageName.slice(1)}();
 // wplaceBot.setStartPosition(x, y);
 // wplaceBot.start();`;
@@ -891,7 +892,7 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
             navigator.clipboard.writeText(text).then(() => {
                 const btn = event.target;
                 const originalText = btn.textContent;
-                btn.textContent = '✅ Copiado!';
+                btn.textContent = '✅ Скопировано!';
                 btn.style.background = '#48bb78';
                 
                 setTimeout(() => {
@@ -899,8 +900,8 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
                     btn.style.background = '#48bb78';
                 }, 2000);
             }).catch(err => {
-                console.error('Erro ao copiar:', err);
-                alert('Erro ao copiar para a área de transferência');
+                console.error('Ошибка при копировании:', err);
+                alert('Ошибка при копировании в буфер обмена');
             });
         }
 
@@ -920,11 +921,11 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
         }
 
         function importImageToCanvas(img) {
-            // Create temporary canvas for processing
+            // Создать временный холст для обработки
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
             
-            // Scale image to fit canvas
+            // Масштабировать изображение под размер холста
             const scale = Math.min(canvasPixelWidth / img.width, canvasPixelHeight / img.height);
             const scaledWidth = Math.floor(img.width * scale);
             const scaledHeight = Math.floor(img.height * scale);
@@ -933,14 +934,14 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
             tempCanvas.height = scaledHeight;
             tempCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
             
-            // Get pixel data
+            // Получить данные пикселей
             const imageData = tempCtx.getImageData(0, 0, scaledWidth, scaledHeight);
             const data = imageData.data;
             
             saveState();
             pixels.clear();
             
-            // Convert to pixels
+            // Конвертировать в пиксели
             for (let y = 0; y < scaledHeight; y++) {
                 for (let x = 0; x < scaledWidth; x++) {
                     const index = (y * scaledWidth + x) * 4;
@@ -949,7 +950,7 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
                     const b = data[index + 2];
                     const a = data[index + 3];
                     
-                    if (a > 128) { // Not transparent
+                    if (a > 128) { // Не прозрачный
                         const color = rgbToHex(r, g, b);
                         pixels.set(`${x},${y}`, color);
                     }
@@ -965,34 +966,34 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
             
-            tempCanvas.width = canvasPixelWidth * 10; // Higher resolution
+            tempCanvas.width = canvasPixelWidth * 10; // Более высокое разрешение
             tempCanvas.height = canvasPixelHeight * 10;
             
-            // White background
+            // Белый фон
             tempCtx.fillStyle = '#FFFFFF';
             tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
             
-            // Draw pixels
+            // Нарисовать пиксели
             pixels.forEach((color, key) => {
                 const [x, y] = key.split(',').map(Number);
                 tempCtx.fillStyle = color;
                 tempCtx.fillRect(x * 10, y * 10, 10, 10);
             });
             
-            // Download
+            // Скачать
             const link = document.createElement('a');
-            link.download = `${document.getElementById('imageName').value || 'pixel_art'}.png`;
+            link.download = `${document.getElementById('imageName').value || 'пиксель_арт'}.png`;
             link.href = tempCanvas.toDataURL();
             link.click();
         }
 
         function rgbToHex(input) {
-            // Se já é uma cor hex, retorna como está
+            // Если уже hex-цвет, вернуть как есть
             if (typeof input === 'string' && input.startsWith('#')) {
                 return input;
             }
             
-            // Se é uma string RGB, converte
+            // Если строка RGB, конвертировать
             if (typeof input === 'string' && input.includes('rgb')) {
                 const result = input.match(/\d+/g);
                 if (!result || result.length < 3) return '#000000';
@@ -1007,7 +1008,7 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
                 }).join('');
             }
             
-            // Se são números separados
+            // Если переданы отдельные числа
             if (arguments.length === 3) {
                 const r = arguments[0];
                 const g = arguments[1];
@@ -1026,9 +1027,9 @@ ${pixelData.map(p => `        { x: ${p.x}, y: ${p.y}, color: '${p.color}' }`).jo
             return '#000000';
         }
 
-        // Initialize when page loads
+        // Инициализация при загрузке страницы
         window.addEventListener('load', () => {
-            // Aguardar um pouco mais para garantir que tudo está carregado
+            // Подождать немного, чтобы убедиться, что все загружено
             setTimeout(init, 50);
         });
     </script>
