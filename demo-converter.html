@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo - Conversor de Imagem para WPlace</title>
+    <title>Демо - Конвертер изображений для WPlace</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,95 +89,95 @@
 </head>
 <body>
     <div class="demo-container">
-        <h1>🎨 Conversor de Imagem para WPlace Bot</h1>
+        <h1>🎨 Конвертер изображений для WPlace Bot</h1>
         
-        <p>Transforme qualquer imagem em pixel art para usar no wplace.live automaticamente!</p>
+        <p>Преобразуйте любое изображение в пиксельное искусство для автоматического использования на wplace.live!</p>
         
         <div class="step">
-            <h3>📋 Como Usar</h3>
+            <h3>📋 Как использовать</h3>
             <ol style="text-align: left;">
-                <li><strong>Abra o wplace.live</strong> no seu navegador</li>
-                <li><strong>Abra o Console</strong> (F12 → aba "Console")</li>
-                <li><strong>Carregue o bot PRIMEIRO</strong> (código abaixo)</li>
-                <li><strong>Use as ferramentas</strong> para criar/converter sua imagem</li>
-                <li><strong>Cole o script gerado</strong> no console</li>
-                <li><strong>Execute wplaceBot.start()</strong> para começar a desenhar</li>
+                <li><strong>Откройте wplace.live</strong> в вашем браузере</li>
+                <li><strong>Откройте консоль</strong> (F12 → вкладка "Консоль")</li>
+                <li><strong>СНАЧАЛА загрузите бот</strong> (код ниже)</li>
+                <li><strong>Используйте инструменты</strong> для создания/конвертации изображения</li>
+                <li><strong>Вставьте сгенерированный скрипт</strong> в консоль</li>
+                <li><strong>Выполните wplaceBot.start()</strong>, чтобы начать рисование</li>
             </ol>
         </div>
 
         <div class="step" style="background: #fff3cd; border-left-color: #ffc107;">
-            <h3>⚠️ IMPORTANTE - Carregar Bot Primeiro</h3>
-            <p><strong>ANTES de usar qualquer ferramenta, você DEVE carregar o bot no console do wplace.live:</strong></p>
+            <h3>⚠️ ВАЖНО - Сначала загрузите бот</h3>
+            <p><strong>ПЕРЕД использованием любых инструментов вы ДОЛЖНЫ загрузить бот в консоли wplace.live:</strong></p>
             <code style="background: #2d3748; color: #e2e8f0; padding: 15px; display: block; margin: 10px 0; border-radius: 4px; font-family: monospace;">
 fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
             </code>
-            <p>✅ Aguarde ver a mensagem "🎨 WPlace Bot Carregado!" e o painel aparecer no canto da tela.</p>
+            <p>✅ Дождитесь сообщения "🎨 WPlace Bot Загружен!" и появления панели в углу экрана.</p>
         </div>
         
         <div class="buttons">
-            <a href="image-converter.html" class="btn">🔧 Abrir Conversor</a>
-            <a href="pixel-editor.html" class="btn" style="background: #9C27B0;">🎨 Editor de Pixel Art</a>
-            <a href="wplace-bot.js" class="btn secondary" download>📥 Baixar Bot</a>
+            <a href="image-converter.html" class="btn">🔧 Открыть конвертер</a>
+            <a href="pixel-editor.html" class="btn" style="background: #9C27B0;">🎨 Редактор пиксельного искусства</a>
+            <a href="wplace-bot.js" class="btn secondary" download>📥 Скачать бот</a>
         </div>
         
         <div class="features">
             <div class="feature">
-                <h4>🖼️ Suporte a Múltiplos Formatos</h4>
-                <p>PNG, JPG, JPEG, GIF - todas as principais extensões de imagem</p>
+                <h4>🖼️ Поддержка нескольких форматов</h4>
+                <p>PNG, JPG, JPEG, GIF - все основные форматы изображений</p>
             </div>
             
             <div class="feature">
-                <h4>� Editor de Pixel Art</h4>
-                <p>Desenhe diretamente na tela com ferramentas profissionais</p>
+                <h4>🎨 Редактор пиксельного искусства</h4>
+                <p>Рисуйте прямо на экране с профессиональными инструментами</p>
             </div>
             
             <div class="feature">
-                <h4>�🎯 Redimensionamento Inteligente</h4>
-                <p>Redimensiona automaticamente mantendo proporções</p>
+                <h4>🎯 Умная масштабировка</h4>
+                <p>Автоматически изменяет размер, сохраняя пропорции</p>
             </div>
             
             <div class="feature">
-                <h4>🎨 Otimização de Cores</h4>
-                <p>Três modos: Paleta limitada, cores completas ou escala de cinza</p>
+                <h4>🎨 Оптимизация цветов</h4>
+                <p>Три режима: ограниченная палитра, полные цвета или оттенки серого</p>
             </div>
             
             <div class="feature">
-                <h4>⏱️ Controle de Velocidade</h4>
-                <p>Configure o delay entre pixels para melhor performance</p>
+                <h4>⏱️ Контроль скорости</h4>
+                <p>Настройте задержку между пикселями для лучшей производительности</p>
             </div>
             
             <div class="feature">
-                <h4>👀 Preview em Tempo Real</h4>
-                <p>Veja como ficará sua imagem antes de gerar o script</p>
+                <h4>👀 Предпросмотр в реальном времени</h4>
+                <p>Увидьте, как будет выглядеть ваше изображение перед созданием скрипта</p>
             </div>
         </div>
         
         <div class="step">
-            <h3>⚡ Início Rápido</h3>
-            <p><strong>1. Abra o wplace.live e pressione F12 (Console)</strong></p>
-            <p><strong>2. Cole este código PRIMEIRO para carregar o bot:</strong></p>
+            <h3>⚡ Быстрый старт</h3>
+            <p><strong>1. Откройте wplace.live и нажмите F12 (Консоль)</strong></p>
+            <p><strong>2. СНАЧАЛА вставьте этот код, чтобы загрузить бот:</strong></p>
             <code style="background: #2d3748; color: #e2e8f0; padding: 15px; display: block; margin: 10px 0; border-radius: 4px; font-family: monospace; word-break: break-all;">
 fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
             </code>
-            <p><strong>3. Aguarde o painel aparecer, então escolha uma opção:</strong></p>
+            <p><strong>3. Дождитесь появления панели, затем выберите опцию:</strong></p>
             <ul style="text-align: left; margin-top: 10px;">
-                <li>🖼️ <strong>Upload direto:</strong> Clique "📁 Carregar Imagem" no painel</li>
-                <li>🔧 <strong>Conversor:</strong> Clique "🔧 Conversor" para imagens existentes</li>
-                <li>🎨 <strong>Editor:</strong> Clique "🎨 Editor" para desenhar do zero</li>
-                <li>❤️ <strong>Teste rápido:</strong> Digite <code>wplaceBot.loadHeartImage(); wplaceBot.start();</code></li>
+                <li>🖼️ <strong>Прямая загрузка:</strong> Нажмите "📁 Загрузить изображение" на панели</li>
+                <li>🔧 <strong>Конвертер:</strong> Нажмите "🔧 Конвертер" для существующих изображений</li>
+                <li>🎨 <strong>Редактор:</strong> Нажмите "🎨 Редактор" для создания с нуля</li>
+                <li>❤️ <strong>Быстрый тест:</strong> Введите <code>wplaceBot.loadHeartImage(); wplaceBot.start();</code></li>
             </ul>
         </div>
         
         <div class="step">
-            <h3>🎯 Dicas Importantes</h3>
+            <h3>🎯 Важные советы</h3>
             <ul style="text-align: left;">
-                <li><strong>⚠️ SEMPRE carregue o bot ANTES</strong> de usar qualquer ferramenta</li>
-                <li><strong>Console:</strong> F12 → aba "Console" (Chrome/Firefox/Edge)</li>
-                <li><strong>Posição:</strong> Configure X e Y onde quer começar (ex: 100, 100)</li>
-                <li><strong>Tamanho:</strong> Máximo 50x50 pixels para desenhos rápidos</li>
-                <li><strong>Delay:</strong> Mínimo 1000ms entre pixels (1 segundo)</li>
-                <li><strong>Teste:</strong> Comece com imagens pequenas primeiro</li>
-                <li><strong>Parar:</strong> Digite <code>wplaceBot.stop()</code> para parar</li>
+                <li><strong>⚠️ ВСЕГДА загружайте бот ПЕРЕД</strong> использованием любых инструментов</li>
+                <li><strong>Консоль:</strong> F12 → вкладка "Консоль" (Chrome/Firefox/Edge)</li>
+                <li><strong>Позиция:</strong> Настройте координаты X и Y для начала (например, 100, 100)</li>
+                <li><strong>Размер:</strong> Максимум 50x50 пикселей для быстрых рисунков</li>
+                <li><strong>Задержка:</strong> Минимум 1000 мс между пикселями (1 секунда)</li>
+                <li><strong>Тест:</strong> Начните с маленьких изображений</li>
+                <li><strong>Остановка:</strong> Введите <code>wplaceBot.stop()</code>, чтобы остановить</li>
             </ul>
         </div>
     </div>
