@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WPlace Bot - Teste Local</title>
+    <title>WPlace Bot - Локальная демонстрация</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -96,31 +96,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎨 WPlace Bot - Demonstração</h1>
+        <h1>🎨 WPlace Bot - Демонстрация</h1>
         
         <div class="warning">
-            <strong>⚠️ Esta é apenas uma demonstração local!</strong><br>
-            Para usar no wplace.live real, copie o código e cole no console do navegador.
+            <strong>⚠️ Это только локальная демонстрация!</strong><br>
+            Для использования на реальном wplace.live скопируйте код и вставьте его в консоль браузера.
         </div>
         
         <div class="instructions">
-            <h2>📋 Como usar no wplace.live:</h2>
+            <h2>📋 Как использовать на wplace.live:</h2>
             <ol>
-                <li>Abra <a href="https://wplace.live" target="_blank">wplace.live</a></li>
-                <li>Pressione <code>F12</code> para abrir o Console do desenvolvedor</li>
-                <li>Copie e cole o código abaixo:</li>
+                <li>Откройте <a href="https://wplace.live" target="_blank">wplace.live</a></li>
+                <li>Нажмите <code>F12</code>, чтобы открыть консоль разработчика</li>
+                <li>Скопируйте и вставьте код ниже:</li>
             </ol>
             
             <div class="code-block" id="code-to-copy">
-                Clique no botão "Copiar Código" abaixo
+                Нажмите на кнопку "Копировать код" ниже
             </div>
             
-            <button onclick="copyCode()">📋 Copiar Código</button>
-            <button onclick="loadFullScript()">🔄 Carregar Script Completo</button>
+            <button onclick="copyCode()">📋 Копировать код</button>
+            <button onclick="loadFullScript()">🔄 Загрузить полный скрипт</button>
         </div>
         
         <div class="canvas-container">
-            <h3>Canvas de Teste (simula o wplace.live)</h3>
+            <h3>Тестовый холст (имитация wplace.live)</h3>
             <canvas id="testCanvas" width="400" height="400"></canvas>
             
             <div class="color-palette">
@@ -136,24 +136,24 @@
                 <div class="color" style="background-color: #800080" data-color="#800080"></div>
             </div>
             
-            <button onclick="testBot()">🧪 Testar Bot (Local)</button>
-            <button onclick="clearCanvas()">🗑️ Limpar Canvas</button>
+            <button onclick="testBot()">🧪 Тестировать бот (локально)</button>
+            <button onclick="clearCanvas()">🗑️ Очистить холст</button>
         </div>
         
         <div class="instructions">
-            <h2>🎮 Comandos do Bot:</h2>
+            <h2>🎮 Команды бота:</h2>
             <div class="code-block">
-// Define posição inicial
+// Установить начальную позицию
 wplaceBot.setStartPosition(100, 100);
 
-// Define delay entre pixels
+// Установить задержку между пикселями
 wplaceBot.setDelay(2000);
 
-// Carrega imagens
+// Загрузить изображения
 wplaceBot.loadHeartImage();
 wplaceBot.loadSmileyImage();
 
-// Controla o bot
+// Управление ботом
 wplaceBot.start();
 wplaceBot.stop();
             </div>
@@ -163,7 +163,7 @@ wplaceBot.stop();
     <script>
         let selectedColor = '#000000';
         
-        // Configurar palette de cores
+        // Настройка палитры цветов
         document.querySelectorAll('.color').forEach(color => {
             color.addEventListener('click', function() {
                 document.querySelectorAll('.color').forEach(c => c.classList.remove('selected'));
@@ -172,20 +172,20 @@ wplaceBot.stop();
             });
         });
         
-        // Configurar canvas
+        // Настройка холста
         const canvas = document.getElementById('testCanvas');
         const ctx = canvas.getContext('2d');
         
-        // Limpar canvas
+        // Очистка холста
         function clearCanvas() {
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
         
-        // Inicializar canvas
+        // Инициализация холста
         clearCanvas();
         
-        // Click no canvas
+        // Клик по холсту
         canvas.addEventListener('click', function(e) {
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -201,13 +201,13 @@ wplaceBot.stop();
                 const code = await response.text();
                 
                 await navigator.clipboard.writeText(code);
-                document.getElementById('code-to-copy').textContent = 'Código copiado para a área de transferência! ✅';
+                document.getElementById('code-to-copy').textContent = 'Код скопирован в буфер обмена! ✅';
                 
                 setTimeout(() => {
-                    document.getElementById('code-to-copy').innerHTML = 'Clique no botão "Copiar Código" abaixo';
+                    document.getElementById('code-to-copy').innerHTML = 'Нажмите на кнопку "Копировать код" ниже';
                 }, 3000);
             } catch (error) {
-                // Fallback - mostrar o código
+                // Резервный вариант - показать код
                 loadFullScript();
             }
         }
@@ -218,15 +218,15 @@ wplaceBot.stop();
                 const code = await response.text();
                 document.getElementById('code-to-copy').textContent = code;
             } catch (error) {
-                document.getElementById('code-to-copy').textContent = 'Erro ao carregar o script. Copie manualmente do arquivo wplace-bot-minified.js';
+                document.getElementById('code-to-copy').textContent = 'Ошибка при загрузке скрипта. Скопируйте вручную из файла wplace-bot-minified.js';
             }
         }
         
         function testBot() {
-            alert('Para testar o bot completo, use-o no site wplace.live real!\n\nEste é apenas um canvas de demonstração.');
+            alert('Для тестирования полного бота используйте его на реальном сайте wplace.live!\n\nЭто только демонстрационный холст.');
         }
         
-        // Selecionar cor preta por padrão
+        // Выбрать черный цвет по умолчанию
         document.querySelector('.color[data-color="#000000"]').classList.add('selected');
     </script>
 </body>
