@@ -1,175 +1,175 @@
-# WPlace Bot - Automação de Desenhos
+# WPlace Bot - Автоматизация рисования
 
-Bot para automatizar a criação de desenhos no site wplace.live.
+Бот для автоматического создания рисунков на сайте wplace.live.
 
-## 🚀 Como Usar (Passo-a-Passo)
+## 🚀 Как использовать (Пошагово)
 
-### **Passo 1: Preparação**
-1. **Abra** [wplace.live](https://wplace.live) no navegador
-2. **Pressione** `F12` para abrir o Console (ou Ctrl+Shift+I)
-3. **Clique** na aba "Console"
+### **Шаг 1: Подготовка**
+1. **Откройте** [wplace.live](https://wplace.live) в браузере
+2. **Нажмите** `F12` чтобы открыть Консоль (или Ctrl+Shift+I)
+3. **Перейдите** на вкладку "Console"
 
-### **Passo 2: Carregar o Bot** ⚠️ **OBRIGATÓRIO**
-**Cole este código no console e pressione Enter:**
+### **Шаг 2: Загрузка бота** ⚠️ **ОБЯЗАТЕЛЬНО**
+**Вставьте этот код в консоль и нажмите Enter:**
 ```javascript
 fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
 ```
 
-**Aguarde ver:**
-- ✅ Mensagem "🎨 WPlace Bot Carregado!"
-- ✅ Painel de controle no canto superior direito
+**Дождитесь появления:**
+- ✅ Сообщения "🎨 WPlace Bot загружен!"
+- ✅ Панели управления в правом верхнем углу
 
-### **Passo 3: Escolha Seu Método**
+### **Шаг 3: Выберите метод**
 
-#### **🖼️ Opção A: Upload Direto (Mais Fácil)**
-1. Clique **"📁 Carregar Imagem"** no painel
-2. Selecione sua imagem
-3. Configure posição (X, Y)
-4. Clique **"▶️ Iniciar"**
+#### **🖼️ Вариант A: Прямая загрузка (Самый простой)**
+1. Нажмите **"📁 Загрузить изображение"** на панели
+2. Выберите изображение
+3. Настройте позицию (X, Y)
+4. Нажмите **"▶️ Начать"**
 
-#### **🔧 Opção B: Conversor Avançado**
-1. Clique **"🔧 Conversor"** no painel
-2. Arraste sua imagem
-3. Configure opções
-4. Gere e copie o script
-5. Cole no console
+#### **🔧 Вариант B: Расширенный конвертер**
+1. Нажмите **"🔧 Конвертер"** на панели
+2. Перетащите изображение
+3. Настройте параметры
+4. Сгенерируйте и скопируйте скрипт
+5. Вставьте в консоль
 
-#### **🎨 Opção C: Editor de Pixel Art**
-1. Clique **"🎨 Editor"** no painel
-2. Desenhe diretamente
-3. Copie o script gerado
-4. Cole no console
+#### **🎨 Вариант C: Редактор пиксельной графики**
+1. Нажмите **"🎨 Редактор"** на панели
+2. Рисуйте напрямую
+3. Скопируйте сгенерированный скрипт
+4. Вставьте в консоль
 
-#### **❤️ Opção D: Teste Rápido**
+#### **❤️ Вариант D: Быстрый тест**
 ```javascript
 wplaceBot.loadHeartImage();
 wplaceBot.setStartPosition(100, 100);
 wplaceBot.start();
 ```
 
-### **Controles Básicos**
+### **Основные команды**
 ```javascript
-wplaceBot.start();    // Iniciar desenho
-wplaceBot.stop();     // Parar desenho
-wplaceBot.setStartPosition(x, y);  // Definir posição
-wplaceBot.setDelay(1000);          // Definir velocidade
+wplaceBot.start();    // Начать рисование
+wplaceBot.stop();     // Остановить рисование
+wplaceBot.setStartPosition(x, y);  // Установить позицию
+wplaceBot.setDelay(1000);          // Установить скорость
 ```
 
-## 🎮 Como Usar o Bot
+## 🎮 Как использовать бота
 
-### Painel de Controle
+### Панель управления
 
-O bot cria um painel de controle no canto superior direito com:
+Бот создает панель управления в правом верхнем углу с:
 
-- **Posição X/Y**: Define onde o desenho começará
-- **Delay**: Tempo entre cada pixel (em milissegundos)
-- **Botões de imagem**: Carrega imagens pré-definidas (Coração, Smiley)
-- **Carregar Imagem**: Permite carregar suas próprias imagens (PNG, JPG, etc.)
-- **Conversor**: Abre a ferramenta de conversão avançada de imagens
-- **Iniciar/Parar**: Controla a execução do bot
+- **Позиция X/Y**: Определяет, где начнется рисунок
+- **Задержка**: Время между каждым пикселем (в миллисекундах)
+- **Кнопки изображений**: Загружают предустановленные изображения (Сердце, Смайлик)
+- **Загрузить изображение**: Позволяет загружать свои изображения (PNG, JPG и др.)
+- **Конвертер**: Открывает расширенный инструмент конвертации изображений
+- **Начать/Остановить**: Управляет работой бота
 
-### 🖼️ Importando Suas Próprias Imagens
+### 🖼️ Импорт собственных изображений
 
-#### Método 1: Upload Direto no Painel
-1. Clique em "📁 Carregar Imagem" no painel de controle
-2. Selecione sua imagem (PNG, JPG, GIF)
-3. A imagem será automaticamente redimensionada e carregada
+#### Метод 1: Прямая загрузка через панель
+1. Нажмите "📁 Загрузить изображение" на панели управления
+2. Выберите изображение (PNG, JPG, GIF)
+3. Изображение будет автоматически масштабировано и загружено
 
-#### Método 2: Conversor Avançado
-1. Clique em "🔧 Conversor" no painel ou abra `image-converter.html`
-2. Arraste sua imagem ou clique para selecionar
-3. Configure as opções:
-   - **Tamanho máximo**: Largura e altura em pixels
-   - **Modo de cor**: Paleta limitada, cores completas ou escala de cinza
-   - **Posição inicial**: Onde começar a desenhar
-   - **Delay**: Tempo entre cada pixel
-4. Clique em "🔄 Converter Imagem" para ver o preview
-5. Clique em "📝 Gerar Script" para obter o código
-6. Copie e cole o script no console do wplace.live
+#### Метод 2: Расширенный конвертер
+1. Нажмите "🔧 Конвертер" на панели или откройте `image-converter.html`
+2. Перетащите изображение или выберите файл
+3. Настройте параметры:
+   - **Макс. размер**: Ширина и высота в пикселях
+   - **Цветовой режим**: Ограниченная палитра, полные цвета или градации серого
+   - **Начальная позиция**: Где начать рисование
+   - **Задержка**: Время между пикселями
+4. Нажмите "🔄 Конвертировать изображение" для предпросмотра
+5. Нажмите "📝 Генерировать скрипт" для получения кода
+6. Скопируйте и вставьте скрипт в консоль wplace.live
 
-#### 🆕 Método 3: Editor de Pixel Art
-1. Clique em "🎨 Editor" no painel ou abra `pixel-editor.html`
-2. **Desenhe diretamente** na tela usando:
-   - **🖌️ Pincel**: Desenhar pixels individuais
-   - **🧽 Borracha**: Apagar pixels
-   - **🪣 Balde**: Preencher áreas
-   - **🎯 Conta-gotas**: Selecionar cores existentes
-   - **📏 Linha**: Desenhar linhas retas
-   - **⬜ Retângulo**: Criar formas retangulares
-3. **Configure o canvas**: Tamanho, cores, zoom
-4. **Visualize em tempo real**: Grade, estatísticas, preview
-5. **Gere o script** automaticamente conforme desenha
-6. **Exporte** em múltiplos formatos ou salve como PNG
+#### 🆕 Метод 3: Редактор пиксельной графики
+1. Нажмите "🎨 Редактор" на панели или откройте `pixel-editor.html`
+2. **Рисуйте напрямую** на экране с помощью:
+   - **🖌️ Кисть**: Рисовать отдельные пиксели
+   - **🧽 Ластик**: Стирать пиксели
+   - **🪣 Заливка**: Заливать области
+   - **🎯 Пипетка**: Выбирать существующие цвета
+   - **📏 Линия**: Рисовать прямые линии
+   - **⬜ Прямоугольник**: Создавать прямоугольные формы
+3. **Настройте холст**: Размер, цвета, масштаб
+4. **Просматривайте в реальном времени**: Сетка, статистика, предпросмотр
+5. **Автоматически генерируйте скрипт** во время рисования
+6. **Экспортируйте** в различные форматы или сохраните как PNG
 
-### Comandos no Console
+### Команды в консоли
 
 ```javascript
-// Define posição inicial (x, y)
+// Установить начальную позицию (x, y)
 wplaceBot.setStartPosition(100, 100);
 
-// Define delay entre cliques (em ms)
+// Установить задержку между кликами (в мс)
 wplaceBot.setDelay(2000);
 
-// Carrega imagens pré-definidas
-wplaceBot.loadHeartImage();    // Coração 7x7
-wplaceBot.loadSmileyImage();   // Smiley 7x7
+// Загрузить предустановленные изображения
+wplaceBot.loadHeartImage();    // Сердце 7x7
+wplaceBot.loadSmileyImage();   // Смайлик 7x7
 
-// Carrega imagem de dados personalizados
-const minhosPixels = [
+// Загрузить пользовательские данные изображения
+const myPixels = [
     { x: 0, y: 0, color: '#FF0000' },
     { x: 1, y: 0, color: '#00FF00' },
-    // ... mais pixels
+    // ... больше пикселей
 ];
-wplaceBot.loadImageFromData(minhosPixels, 'Minha Imagem');
+wplaceBot.loadImageFromData(myPixels, 'Мое изображение');
 
-// Carrega imagem de URL (data URL ou URL externa)
+// Загрузить изображение по URL (data URL или внешний URL)
 wplaceBot.loadImageFromUrl('data:image/png;base64,...', 50, 50);
 
-// Controla o bot
-wplaceBot.start();  // Inicia
-wplaceBot.stop();   // Para
+// Управление ботом
+wplaceBot.start();  // Запустить
+wplaceBot.stop();   // Остановить
 ```
 
-## 🎨 Imagens Disponíveis
+## 🎨 Доступные изображения
 
-### Imagens Pré-definidas
+### Предустановленные изображения
 
-- **❤️ Coração**: 7x7 pixels em vermelho
-- **😊 Smiley**: 7x7 pixels amarelo com rosto sorridente
+- **❤️ Сердце**: 7x7 пикселей красного цвета
+- **😊 Смайлик**: 7x7 пикселей желтого цвета с улыбающимся лицом
 
-### 🆕 Suas Próprias Imagens
+### 🆕 Собственные изображения
 
-Agora você pode importar qualquer imagem! O bot suporta:
+Теперь вы можете импортировать любое изображение! Бот поддерживает:
 
-- **Formatos**: PNG, JPG, JPEG, GIF
-- **Redimensionamento automático**: Suas imagens são redimensionadas para o tamanho ideal
-- **Otimização de cores**: Converte para as cores disponíveis no wplace.live
-- **Três modos de cor**:
-  - **Paleta Limitada**: Usa apenas cores comuns do wplace
-  - **Cores Completas**: Mantém cores originais (pode não ter correspondência exata)
-  - **Escala de Cinza**: Converte para preto e branco
+- **Форматы**: PNG, JPG, JPEG, GIF
+- **Автомасштабирование**: Ваши изображения масштабируются до оптимального размера
+- **Оптимизация цветов**: Конвертация в цвета, доступные на wplace.live
+- **Три цветовых режима**:
+  - **Ограниченная палитра**: Использует только общие цвета wplace
+  - **Полные цвета**: Сохраняет оригинальные цвета (может не быть точного соответствия)
+  - **Градации серого**: Конвертирует в черно-белое
 
-### Como Converter Suas Imagens
+### Как конвертировать изображения
 
-1. **Abra o Conversor**: Use `image-converter.html` ou clique no botão "🔧 Conversor" no painel
-2. **Importe sua Imagem**: Arraste ou selecione o arquivo
-3. **Configure as Opções**:
-   - Tamanho máximo (recomendado: 50x50 para imagens pequenas)
-   - Modo de cor (recomendado: Paleta Limitada)
-   - Posição inicial no canvas
-   - Delay entre pixels
-4. **Visualize o Resultado**: Veja como ficará sua imagem pixelizada
-5. **Gere o Script**: Obtenha o código pronto para usar
-6. **Use no WPlace**: Cole o script no console do wplace.live
+1. **Откройте конвертер**: Используйте `image-converter.html` или нажмите кнопку "🔧 Конвертер" на панели
+2. **Импортируйте изображение**: Перетащите или выберите файл
+3. **Настройте параметры**:
+   - Максимальный размер (рекомендуется 50x50 для маленьких изображений)
+   - Цветовой режим (рекомендуется: Ограниченная палитра)
+   - Начальная позиция на холсте
+   - Задержка между пикселями
+4. **Просмотрите результат**: Увидьте, как будет выглядеть ваше пикселизированное изображение
+5. **Сгенерируйте скрипт**: Получите готовый к использованию код
+6. **Используйте на WPlace**: Вставьте скрипт в консоль wplace.live
 
-### ⚠️ Dicas Importantes
+### ⚠️ Важные советы
 
-- **Tamanho**: Imagens muito grandes demoram muito para desenhar
-- **Delay**: Use pelo menos 1000ms entre pixels para evitar sobrecarga
-- **Cores**: Modo "Paleta Limitada" garante melhor compatibilidade
-- **Posição**: Verifique se há espaço suficiente no canvas antes de iniciar
+- **Размер**: Очень большие изображения рисуются долго
+- **Задержка**: Используйте минимум 1000мс между пикселями, чтобы избежать перегрузки
+- **Цвета**: Режим "Ограниченная палитра" обеспечивает лучшую совместимость
+- **Позиция**: Убедитесь, что на холсте достаточно места перед началом
 
-### Coração (7x7)
+### Сердце (7x7)
 ```
 ⬜🟥🟥⬜🟥🟥⬜
 🟥🟥🟥🟥🟥🟥🟥
@@ -180,7 +180,7 @@ Agora você pode importar qualquer imagem! O bot suporta:
 ⬜⬜⬜🟥⬜⬜⬜
 ```
 
-### Smiley (7x7)
+### Смайлик (7x7)
 ```
 ⬜⬜🟨🟨🟨⬜⬜
 ⬜🟨🟨🟨🟨🟨⬜
@@ -191,23 +191,23 @@ Agora você pode importar qualquer imagem! O bot suporta:
 ⬜⬜🟨🟨🟨⬜⬜
 ```
 
-## 🔧 Criando Suas Próprias Imagens
+## 🔧 Создание собственных изображений
 
-### Método Simples
+### Простой метод
 
 ```javascript
-// Crie uma matriz de cores (7x7 exemplo)
-const minhaImagem = [
+// Создайте матрицу цветов (пример 7x7)
+const myImage = [
     '#FF0000', '#FF0000', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF0000', '#FF0000',
     '#FF0000', '#FFFFFF', '#FF0000', '#FFFFFF', '#FF0000', '#FFFFFF', '#FF0000',
-    // ... continue para 49 pixels (7x7)
+    // ... продолжайте для 49 пикселей (7x7)
 ];
 
-// Carregue a imagem
-wplaceBot.loadSimpleImage(minhaImagem, 7, 7);
+// Загрузите изображение
+wplaceBot.loadSimpleImage(myImage, 7, 7);
 ```
 
-### Método com Emojis
+### Метод с эмодзи
 
 ```javascript
 const design = [
@@ -225,111 +225,111 @@ const imageData = design.map(emoji => colorMap[emoji]);
 wplaceBot.loadSimpleImage(imageData, 3, 3);
 ```
 
-## ⚠️ Avisos Importantes
+## ⚠️ Важные предупреждения
 
-1. **Use com responsabilidade**: Respeite a comunidade do wplace.live
-2. **Delays adequados**: Use delays de pelo menos 1000ms para não sobrecarregar o servidor
-3. **Tamanho das imagens**: Comece com imagens pequenas (máximo 10x10)
-4. **Coordenadas**: Verifique se suas coordenadas não vão além dos limites do canvas
+1. **Используйте ответственно**: Уважайте сообщество wplace.live
+2. **Адекватные задержки**: Используйте задержки минимум 1000мс, чтобы не перегружать сервер
+3. **Размер изображений**: Начните с маленьких изображений (максимум 10x10)
+4. **Координаты**: Убедитесь, что ваши координаты не выходят за пределы холста
 
-## 🛠️ Recursos do Bot
+## 🛠️ Функции бота
 
-- ✅ Interface gráfica integrada
-- ✅ Detecção automática do canvas
-- ✅ Detecção automática da paleta de cores
-- ✅ Seleção automática da cor mais próxima
-- ✅ Controle de velocidade (delay)
-- ✅ Imagens pré-definidas
-- ✅ Sistema de parada de emergência
-- ✅ Log detalhado das ações
+- ✅ Встроенный графический интерфейс
+- ✅ Автоматическое обнаружение холста
+- ✅ Автоматическое обнаружение цветовой палитры
+- ✅ Автоматический выбор ближайшего цвета
+- ✅ Контроль скорости (задержка)
+- ✅ Предустановленные изображения
+- ✅ Система аварийной остановки
+- ✅ Подробное логирование действий
 
-## 🐛 Solução de Problemas
+## 🐛 Решение проблем
 
-### "Canvas não encontrado"
-- Certifique-se de estar no site wplace.live
-- Aguarde o site carregar completamente
-- Recarregue a página e tente novamente
+### "Холст не найден"
+- Убедитесь, что вы на сайте wplace.live
+- Дождитесь полной загрузки сайта
+- Перезагрузите страницу и попробуйте снова
 
-### "Cores não selecionadas"
-- O site pode ter mudado a estrutura da paleta de cores
-- Tente selecionar as cores manualmente primeiro
+### "Цвета не выбраны"
+- Сайт мог изменить структуру цветовой палитры
+- Попробуйте сначала выбрать цвета вручную
 
-### Bot não funciona
-- Verifique se não há bloqueadores de script
-- Tente recarregar o script
-- Verifique o console para erros
+### Бот не работает
+- Проверьте, нет ли блокировщиков скриптов
+- Попробуйте перезагрузить скрипт
+- Проверьте консоль на наличие ошибок
 
-## 📝 Licença
+## 📝 Лицензия
 
-Este script é fornecido "como está" para fins educacionais. Use por sua própria conta e risco.
+Этот скрипт предоставляется "как есть" в образовательных целях. Используйте на свой страх и риск.
 
-## 📁 Arquivos do Projeto
+## 📁 Файлы проекта
 
-- `wplace-bot.js` - Script principal do bot com todas as funcionalidades
-- `wplace-bot-minified.js` - Versão minificada do bot
-- `image-converter.html` - **🔧 Conversor web de imagens** (Interface completa)
-- `pixel-editor.html` - **🆕 Editor de Pixel Art** (Desenhe diretamente na tela!)
-- `demo-converter.html` - Página de demonstração e instruções
-- `custom-images.md` - Exemplos e guia para imagens personalizadas
-- `README.md` - Este arquivo com todas as instruções
+- `wplace-bot.js` - Основной скрипт бота со всеми функциями
+- `wplace-bot-minified.js` - Минимизированная версия бота
+- `image-converter.html` - **🔧 Веб-конвертер изображений** (Полный интерфейс)
+- `pixel-editor.html` - **🆕 Редактор пиксельной графики** (Рисуйте прямо на экране!)
+- `demo-converter.html` - Демонстрационная страница с инструкциями
+- `custom-images.md` - Примеры и руководство по пользовательским изображениям
+- `README.md` - Этот файл со всеми инструкциями
 
-## 🆕 Novidades - Editor de Pixel Art
+## 🆕 Новинка - Редактор пиксельной графики
 
-### 🎨 Editor Completo de Pixel Art
-O arquivo `pixel-editor.html` é um editor completo onde você pode **desenhar diretamente**:
+### 🎨 Полноценный редактор пиксельной графики
+Файл `pixel-editor.html` - это полноценный редактор, где вы можете **рисовать напрямую**:
 
-#### **🛠️ Ferramentas Disponíveis**:
-- **�️ Pincel**: Desenhar pixel por pixel
-- **🧽 Borracha**: Apagar pixels específicos
-- **🪣 Balde**: Preencher áreas com uma cor
-- **🎯 Conta-gotas**: Selecionar cores existentes no desenho
-- **📏 Linha**: Desenhar linhas retas perfeitas
-- **⬜ Retângulo**: Criar formas retangulares
+#### **🛠️ Доступные инструменты**:
+- **🖌️ Кисть**: Рисовать пиксель за пикселем
+- **🧽 Ластик**: Стирать отдельные пиксели
+- **🪣 Заливка**: Заливать области цветом
+- **🎯 Пипетка**: Выбирать существующие цвета на рисунке
+- **📏 Линия**: Рисовать идеально прямые линии
+- **⬜ Прямоугольник**: Создавать прямоугольные формы
 
-#### **🎨 Sistema de Cores**:
-- **Paleta de 30 cores** otimizada para wplace.live
-- **Seletor de cor personalizado** para cores específicas
-- **Preview em tempo real** de todas as cores
+#### **🎨 Система цветов**:
+- **Палитра из 30 цветов**, оптимизированная для wplace.live
+- **Пользовательский выбор цвета** для специфических оттенков
+- **Предпросмотр в реальном времени** всех цветов
 
-#### **📐 Controles de Canvas**:
-- **Tamanho configurável**: De 5x5 até 100x100 pixels
-- **Zoom ajustável**: 1x até 5x para precisão
-- **Grade opcional**: Para melhor visualização
-- **Histórico completo**: Desfazer/Refazer ilimitado
+#### **📐 Управление холстом**:
+- **Настраиваемый размер**: От 5x5 до 100x100 пикселей
+- **Регулируемый масштаб**: От 1x до 5x для точности
+- **Опциональная сетка**: Для лучшей визуализации
+- **Полная история**: Неограниченное отмена/повтор действий
 
-#### **📊 Recursos Avançados**:
-- **Importação de imagens**: Arraste imagens existentes
-- **Exportação PNG**: Salve seu trabalho em alta resolução
-- **Estatísticas em tempo real**: Pixels, cores, tempo estimado
-- **Múltiplos formatos de script**: Script completo, função ou dados puros
+#### **📊 Расширенные функции**:
+- **Импорт изображений**: Перетаскивание существующих изображений
+- **Экспорт PNG**: Сохраняйте свою работу в высоком разрешении
+- **Статистика в реальном времени**: Пиксели, цвета, расчетное время
+- **Множественные форматы скриптов**: Полный скрипт, функция или чистые данные
 
-#### **⚡ Geração Automática**:
-- **Script gerado em tempo real** conforme você desenha
-- **Três formatos de saída**:
-  - Script completo pronto para usar
-  - Função personalizada
-  - Dados puros da imagem
-- **Cópia com um clique** para área de transferência
+#### **⚡ Автоматическая генерация**:
+- **Скрипт генерируется в реальном времени** по мере рисования
+- **Три формата вывода**:
+  - Полный скрипт, готовый к использованию
+  - Пользовательская функция
+  - Чистые данные изображения
+- **Копирование в один клик** в буфер обмена
 
 ---
 
-**🎉 Agora você tem 3 formas diferentes de criar arte para o wplace.live:**
+**🎉 Теперь у вас есть 3 способа создавать искусство для wplace.live:**
 
-### 1. 📁 **Upload Direto** - *Rápido e Simples*
-- Clique em "📁 Carregar Imagem" no painel
-- Selecione qualquer imagem
-- Pronto para usar!
+### 1. 📁 **Прямая загрузка** - *Быстро и просто*
+- Нажмите "📁 Загрузить изображение" на панели
+- Выберите любое изображение
+- Готово к использованию!
 
-### 2. 🔧 **Conversor Avançado** - *Máximo Controle*
-- Importe qualquer formato de imagem
-- Configure tamanho, cores e otimizações
-- Preview completo antes de gerar
-- Múltiplos formatos de saída
+### 2. 🔧 **Расширенный конвертер** - *Максимальный контроль*
+- Импортируйте любой формат изображения
+- Настройте размер, цвета и оптимизацию
+- Полный предпросмотр перед генерацией
+- Множество форматов вывода
 
-### 3. 🎨 **Editor de Pixel Art** - *Criação Original*
-- Desenhe diretamente na tela
-- Ferramentas profissionais (pincel, balde, linha, etc.)
-- Geração de script em tempo real
-- Sistema completo de cores e zoom
+### 3. 🎨 **Редактор пиксельной графики** - *Оригинальное творчество*
+- Рисуйте прямо на экране
+- Профессиональные инструменты (кисть, заливка, линия и др.)
+- Генерация скрипта в реальном времени
+- Полноценная система цветов и масштабирования
 
-**✨ Todos os métodos geram scripts prontos para colar no console do wplace.live!**
+**✨ Все методы генерируют скрипты, готовые для вставки в консоль wplace.live!**
