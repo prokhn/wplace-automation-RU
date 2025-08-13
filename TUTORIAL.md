@@ -1,262 +1,262 @@
-# 📋 Guia Completo - Como Usar o WPlace Bot
+# 📋 Полное руководство - Как использовать WPlace Bot
 
-## 🚀 Passo-a-Passo Completo
+## 🚀 Пошаговая инструкция
 
-### **1. Preparação Inicial**
+### **1. Подготовка**
 
-#### **1.1 Abrir o Site**
-1. Abra seu navegador (Chrome, Firefox, Edge, etc.)
-2. Acesse: **https://wplace.live**
-3. Aguarde o site carregar completamente
-4. Certifique-se de que o canvas (área de desenho) está visível
+#### **1.1 Открытие сайта**
+1. Откройте браузер (Chrome, Firefox, Edge и т.д.)
+2. Перейдите по адресу: **https://wplace.live**
+3. Дождитесь полной загрузки сайта
+4. Убедитесь, что холст (область рисования) отображается
 
-#### **1.2 Abrir o Console do Desenvolvedor**
-- **Windows/Linux**: Pressione `F12` ou `Ctrl + Shift + I`
-- **Mac**: Pressione `Cmd + Option + I`
-- **Alternativa**: Clique com botão direito → "Inspecionar" → aba "Console"
+#### **1.2 Открытие консоли разработчика**
+- **Windows/Linux**: Нажмите `F12` или `Ctrl + Shift + I`
+- **Mac**: Нажмите `Cmd + Option + I`
+- **Альтернатива**: Кликните правой кнопкой → "Инспектировать" → вкладка "Console"
 
-### **2. Carregar o Bot (OBRIGATÓRIO)**
+### **2. Загрузка бота (ОБЯЗАТЕЛЬНО)**
 
-#### **2.1 Cole o Código Principal**
-No console, cole este código e pressione `Enter`:
+#### **2.1 Вставка основного кода**
+В консоли вставьте этот код и нажмите `Enter`:
 
 ```javascript
 fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
 ```
 
-**OU** cole o código completo do arquivo `wplace-bot.js` diretamente.
+**ИЛИ** вставьте полный код из файла `wplace-bot.js` напрямую.
 
-#### **2.2 Verificar se Carregou**
-Após executar, você deve ver:
-- ✅ Mensagem: "🎨 WPlace Bot Carregado!"
-- ✅ Painel de controle no canto superior direito
-- ✅ Lista de comandos disponíveis no console
+#### **2.2 Проверка загрузки**
+После выполнения вы должны увидеть:
+- ✅ Сообщение: "🎨 WPlace Bot загружен!"
+- ✅ Панель управления в правом верхнем углу
+- ✅ Список доступных команд в консоли
 
 ---
 
-## 🎨 **3. Escolher Seu Método de Criação**
+## 🎨 **3. Выбор метода создания**
 
-### **Método A: Imagens Pré-definidas (Mais Fácil)**
+### **Метод A: Готовые изображения (Самый простой)**
 
 ```javascript
-// Carregar coração
+// Загрузить сердце
 wplaceBot.loadHeartImage();
 
-// OU carregar smiley
+// ИЛИ загрузить смайлик
 wplaceBot.loadSmileyImage();
 
-// Definir posição (onde começar a desenhar)
+// Установить позицию (где начать рисовать)
 wplaceBot.setStartPosition(100, 100);
 
-// Definir velocidade (delay entre pixels em ms)
+// Установить скорость (задержка между пикселями в мс)
 wplaceBot.setDelay(1000);
 
-// Iniciar o desenho
+// Начать рисование
 wplaceBot.start();
 ```
 
-### **Método B: Upload de Imagem (Painel)**
+### **Метод B: Загрузка изображения (Через панель)**
 
-1. **Clique em "📁 Carregar Imagem"** no painel
-2. **Selecione sua imagem** (PNG, JPG, etc.)
-3. **Configure posição** nos campos X e Y
-4. **Ajuste o delay** se necessário
-5. **Clique "▶️ Iniciar"**
+1. **Нажмите "📁 Загрузить изображение"** на панели
+2. **Выберите изображение** (PNG, JPG и т.д.)
+3. **Установите позицию** в полях X и Y
+4. **Настройте задержку** при необходимости
+5. **Нажмите "▶️ Начать"**
 
-### **Método C: Conversor Avançado**
+### **Метод C: Расширенный конвертер**
 
-1. **Clique em "🔧 Conversor"** no painel (abre nova aba)
-2. **Arraste sua imagem** ou clique para selecionar
-3. **Configure as opções**:
-   - Tamanho máximo
-   - Modo de cor (recomendado: Paleta Limitada)
-   - Posição inicial
-   - Delay
-4. **Clique "🔄 Converter Imagem"**
-5. **Clique "📝 Gerar Script"**
-6. **Copie o código gerado**
-7. **Volte para o wplace.live**
-8. **Cole o código no console**
+1. **Нажмите "🔧 Конвертер"** на панели (откроется новая вкладка)
+2. **Перетащите изображение** или выберите его
+3. **Настройте параметры**:
+   - Максимальный размер
+   - Режим цвета (рекомендуется: Ограниченная палитра)
+   - Начальная позиция
+   - Задержка
+4. **Нажмите "🔄 Конвертировать изображение"**
+5. **Нажмите "📝 Сгенерировать скрипт"**
+6. **Скопируйте сгенерированный код**
+7. **Вернитесь на wplace.live**
+8. **Вставьте код в консоль**
 
-### **Método D: Editor de Pixel Art**
+### **Метод D: Редактор пиксельной графики**
 
-1. **Clique em "🎨 Editor"** no painel (abre nova aba)
-2. **Desenhe diretamente** no canvas usando as ferramentas
-3. **Configure as opções** na sidebar direita
-4. **Copie o script gerado automaticamente**
-5. **Volte para o wplace.live**
-6. **Cole o código no console**
+1. **Нажмите "🎨 Редактор"** на панели (откроется новая вкладка)
+2. **Рисуйте прямо** на холсте с помощью инструментов
+3. **Настройте параметры** в боковой панели справа
+4. **Скопируйте автоматически сгенерированный скрипт**
+5. **Вернитесь на wplace.live**
+6. **Вставьте код в консоль**
 
 ---
 
-## ⚙️ **4. Configurações Importantes**
+## ⚙️ **4. Важные настройки**
 
-### **4.1 Posição Inicial**
+### **4.1 Начальная позиция**
 ```javascript
-// Definir onde começar a desenhar (X, Y)
+// Установить, где начать рисовать (X, Y)
 wplaceBot.setStartPosition(100, 100);
 ```
 
-### **4.2 Velocidade/Delay**
+### **4.2 Скорость/Задержка**
 ```javascript
-// Delay entre pixels (em milissegundos)
-wplaceBot.setDelay(1000);  // 1 segundo
-wplaceBot.setDelay(2000);  // 2 segundos (mais seguro)
-wplaceBot.setDelay(500);   // 0.5 segundos (mais rápido)
+// Задержка между пикселями (в миллисекундах)
+wplaceBot.setDelay(1000);  // 1 секунда
+wplaceBot.setDelay(2000);  // 2 секунды (безопаснее)
+wplaceBot.setDelay(500);   // 0.5 секунды (быстрее)
 ```
 
-### **4.3 Controlar o Bot**
+### **4.3 Управление ботом**
 ```javascript
-// Iniciar o desenho
+// Начать рисование
 wplaceBot.start();
 
-// Parar o desenho
+// Остановить рисование
 wplaceBot.stop();
 
-// Ver status
-console.log('Bot rodando:', wplaceBot.isRunning);
+// Проверить статус
+console.log('Бот работает:', wplaceBot.isRunning);
 ```
 
 ---
 
-## 🎯 **5. Exemplo Completo Passo-a-Passo**
+## 🎯 **5. Полный пример пошагово**
 
-### **Exemplo 1: Desenhar um Coração**
+### **Пример 1: Нарисовать сердце**
 
 ```javascript
-// 1. Certifique-se de que o bot está carregado
-// (execute o fetch acima primeiro)
+// 1. Убедитесь, что бот загружен
+// (выполните fetch выше сначала)
 
-// 2. Carregar a imagem do coração
+// 2. Загрузить изображение сердца
 wplaceBot.loadHeartImage();
 
-// 3. Definir onde desenhar (coordenadas X, Y)
+// 3. Установить, где рисовать (координаты X, Y)
 wplaceBot.setStartPosition(200, 150);
 
-// 4. Definir velocidade (2 segundos entre pixels)
+// 4. Установить скорость (2 секунды между пикселями)
 wplaceBot.setDelay(2000);
 
-// 5. Iniciar o desenho
+// 5. Начать рисование
 wplaceBot.start();
 
-// Para parar a qualquer momento:
+// Чтобы остановить в любой момент:
 // wplaceBot.stop();
 ```
 
-### **Exemplo 2: Usar Imagem Personalizada**
+### **Пример 2: Использовать свое изображение**
 
 ```javascript
-// 1. Use o conversor ou editor para gerar este código
-// 2. Cole o código gerado (exemplo):
+// 1. Используйте конвертер или редактор для генерации этого кода
+// 2. Вставьте сгенерированный код (пример):
 
-const minha_imagemData = [
+const my_imageData = [
     { x: 0, y: 0, color: '#FF0000' },
     { x: 1, y: 0, color: '#00FF00' },
     { x: 0, y: 1, color: '#0000FF' },
     { x: 1, y: 1, color: '#FFFF00' }
 ];
 
-function loadMinha_imagem() {
-    wplaceBot.loadImageFromData(minha_imagemData, 'minha_imagem');
+function loadMy_image() {
+    wplaceBot.loadImageFromData(my_imageData, 'my_image');
     wplaceBot.setStartPosition(100, 100);
     wplaceBot.setDelay(1000);
-    console.log('✅ Imagem carregada! Use wplaceBot.start() para desenhar');
+    console.log('✅ Изображение загружено! Используйте wplaceBot.start() для рисования');
 }
 
-// 3. Executar a função
-loadMinha_imagem();
+// 3. Выполните функцию
+loadMy_image();
 
-// 4. Iniciar o desenho
+// 4. Начните рисование
 wplaceBot.start();
 ```
 
 ---
 
-## ⚠️ **6. Dicas Importantes**
+## ⚠️ **6. Важные советы**
 
-### **6.1 Antes de Começar**
-- ✅ **Verifique se há espaço** livre no canvas
-- ✅ **Teste com imagens pequenas** primeiro
-- ✅ **Use delay de pelo menos 1000ms** para evitar sobrecarga
-- ✅ **Certifique-se de que está logado** no wplace.live
+### **6.1 Перед началом**
+- ✅ **Проверьте наличие свободного места** на холсте
+- ✅ **Сначала тестируйте с маленькими изображениями**
+- ✅ **Используйте задержку минимум 1000мс**, чтобы избежать перегрузки
+- ✅ **Убедитесь, что вы авторизованы** на wplace.live
 
-### **6.2 Durante o Desenho**
-- ⏸️ **Pode parar a qualquer momento** com `wplaceBot.stop()`
-- 👀 **Monitore o console** para ver o progresso
-- 🔄 **Se der erro, recarregue a página** e comece novamente
+### **6.2 Во время рисования**
+- ⏸️ **Можно остановить в любой момент** с помощью `wplaceBot.stop()`
+- 👀 **Следите за консолью** для отслеживания прогресса
+- 🔄 **При ошибке перезагрузите страницу** и начните заново
 
-### **6.3 Resolução de Problemas**
+### **6.3 Решение проблем**
 
-#### **"Canvas não encontrado"**
+#### **"Холст не найден"**
 ```javascript
-// Recarregue a página e tente novamente
+// Перезагрузите страницу и попробуйте снова
 location.reload();
 ```
 
-#### **"WPlace Bot não encontrado"**
+#### **"WPlace Bot не найден"**
 ```javascript
-// Carregue o bot novamente
+// Загрузите бота снова
 fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
 ```
 
-#### **Bot não está funcionando**
+#### **Бот не работает**
 ```javascript
-// Verificar se o bot existe
+// Проверить, существует ли бот
 console.log(typeof wplaceBot);
 
-// Reinicializar se necessário
+// Переинициализировать при необходимости
 wplaceBot.init();
 ```
 
 ---
 
-## 📱 **7. Comandos Úteis no Console**
+## 📱 **7. Полезные команды в консоли**
 
-### **7.1 Status e Informações**
+### **7.1 Статус и информация**
 ```javascript
-// Ver se o bot está rodando
-console.log('Status:', wplaceBot.isRunning ? 'Rodando' : 'Parado');
+// Проверить, работает ли бот
+console.log('Статус:', wplaceBot.isRunning ? 'Работает' : 'Остановлен');
 
-// Ver posição atual
-console.log('Posição:', wplaceBot.startX, wplaceBot.startY);
+// Проверить текущую позицию
+console.log('Позиция:', wplaceBot.startX, wplaceBot.startY);
 
-// Ver delay atual
-console.log('Delay:', wplaceBot.delay + 'ms');
+// Проверить текущую задержку
+console.log('Задержка:', wplaceBot.delay + 'мс');
 
-// Ver quantos pixels restam
-console.log('Progresso:', wplaceBot.currentPixel + '/' + wplaceBot.pixels.length);
+// Проверить, сколько пикселей осталось
+console.log('Прогресс:', wplaceBot.currentPixel + '/' + wplaceBot.pixels.length);
 ```
 
-### **7.2 Configurações Rápidas**
+### **7.2 Быстрые настройки**
 ```javascript
-// Configuração rápida para teste
+// Быстрая настройка для теста
 wplaceBot.loadHeartImage();
 wplaceBot.setStartPosition(100, 100);
 wplaceBot.setDelay(1500);
 
-// Configuração para imagem grande (mais lenta)
+// Настройка для большого изображения (медленнее)
 wplaceBot.setDelay(3000);
 
-// Configuração para imagem pequena (mais rápida)
+// Настройка для маленького изображения (быстрее)
 wplaceBot.setDelay(800);
 ```
 
 ---
 
-## 🎉 **8. Exemplo de Uso Completo**
+## 🎉 **8. Пример полного использования**
 
-### **Sequência Completa do Zero:**
+### **Полная последовательность с нуля:**
 
-1. **Abrir wplace.live**
-2. **Pressionar F12** (abrir console)
-3. **Colar e executar:**
+1. **Откройте wplace.live**
+2. **Нажмите F12** (откройте консоль)
+3. **Вставьте и выполните:**
    ```javascript
    fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
    ```
-4. **Aguardar mensagem de confirmação**
-5. **Escolher uma opção:**
+4. **Дождитесь подтверждения загрузки**
+5. **Выберите опцию:**
    
-   **Opção A - Coração simples:**
+   **Опция A - Простое сердце:**
    ```javascript
    wplaceBot.loadHeartImage();
    wplaceBot.setStartPosition(100, 100);
@@ -264,20 +264,20 @@ wplaceBot.setDelay(800);
    wplaceBot.start();
    ```
    
-   **Opção B - Usar painel:**
-   - Clicar em "📁 Carregar Imagem"
-   - Selecionar arquivo
-   - Clicar "▶️ Iniciar"
+   **Опция B - Использовать панель:**
+   - Нажмите "📁 Загрузить изображение"
+   - Выберите файл
+   - Нажмите "▶️ Начать"
    
-   **Opção C - Conversor/Editor:**
-   - Clicar "🔧 Conversor" ou "🎨 Editor"
-   - Criar/converter imagem
-   - Copiar script gerado
-   - Colar no console
+   **Опция C - Конвертер/Редактор:**
+   - Нажмите "🔧 Конвертер" или "🎨 Редактор"
+   - Создайте/конвертируйте изображение
+   - Скопируйте сгенерированный скрипт
+   - Вставьте в консоль
 
-6. **Acompanhar o progresso no console**
-7. **Parar quando necessário:** `wplaceBot.stop()`
+6. **Следите за прогрессом в консоли**
+7. **Остановите при необходимости:** `wplaceBot.stop()`
 
 ---
 
-**🎯 Pronto! Agora você pode desenhar qualquer coisa no wplace.live automaticamente!**
+**🎯 Готово! Теперь вы можете рисовать что угодно на wplace.live автоматически!**
