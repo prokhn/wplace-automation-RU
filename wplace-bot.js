@@ -1,17 +1,17 @@
 /**
- * Bot para automatizar desenhos no wplace.live
- * Instruções:
- * 1. Abra o site wplace.live no navegador
- * 2. Abra o Console do desenvolvedor (F12 > Console)
- * 3. Cole este script e pressione Enter
- * 4. Configure sua imagem e posição inicial
- * 5. Execute o bot
+ * Бот для автоматизации рисования на wplace.live
+ * Инструкции:
+ * 1. Откройте сайт wplace.live в браузере
+ * 2. Откройте консоль разработчика (F12 > Консоль)
+ * 3. Вставьте этот скрипт и нажмите Enter
+ * 4. Настройте изображение и начальную позицию
+ * 5. Запустите бот
  */
 
 class WPlaceBot {
     constructor() {
         this.isRunning = false;
-        this.delay = 1000; // Delay entre cliques em ms
+        this.delay = 1000; // Задержка между кликами в мс
         this.currentPixel = 0;
         this.pixels = [];
         this.startX = 0;
@@ -21,17 +21,17 @@ class WPlaceBot {
         this.selectedColor = '#000000';
     }
 
-    // Inicializa o bot
+    // Инициализирует бот
     init() {
-        console.log('🎨 WPlace Bot inicializado!');
+        console.log('🎨 WPlace Bot инициализирован!');
         this.findCanvas();
         this.findColorPalette();
         this.createControlPanel();
     }
 
-    // Encontra o canvas do wplace
+    // Находит холст wplace
     findCanvas() {
-        // Procura por diferentes possíveis seletores do canvas
+        // Поиск различных возможных селекторов холста
         const possibleSelectors = [
             'canvas',
             '#canvas',
@@ -45,17 +45,17 @@ class WPlaceBot {
             const element = document.querySelector(selector);
             if (element) {
                 this.canvas = element;
-                console.log('✅ Canvas encontrado:', selector);
+                console.log('✅ Холст найден:', selector);
                 return;
             }
         }
 
-        console.error('❌ Canvas não encontrado. Certifique-se de estar no wplace.live');
+        console.error('❌ Холст не найден. Убедитесь, что вы находитесь на wplace.live');
     }
 
-    // Encontra a paleta de cores
+    // Находит палитру цветов
     findColorPalette() {
-        // Procura por elementos que podem ser cores
+        // Поиск элементов, которые могут быть цветами
         const colorElements = document.querySelectorAll('[style*="background-color"], .color, [data-color], .palette-color');
         
         colorElements.forEach(element => {
@@ -68,10 +68,10 @@ class WPlaceBot {
             }
         });
 
-        console.log(`✅ Encontradas ${this.colorPalette.length} cores na paleta`);
+        console.log(`✅ Найдено ${this.colorPalette.length} цветов в палитре`);
     }
 
-    // Converte cor RGB para HEX
+    // Конвертирует цвет RGB в HEX
     rgbToHex(rgb) {
         const result = rgb.match(/\d+/g);
         if (!result) return '#000000';
@@ -80,14 +80,14 @@ class WPlaceBot {
         return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
     }
 
-    // Encontra a cor mais próxima na paleta
+    // Находит ближайший цвет в палитре
     findClosestColor(targetColor) {
         if (this.colorPalette.length === 0) return null;
 
         let closestColor = this.colorPalette[0];
         let minDistance = Infinity;
 
-        // Converte cor alvo para RGB
+        // Конвертирует целевой цвет в RGB
         const target = this.hexToRgb(targetColor);
         if (!target) return closestColor;
 
@@ -110,7 +110,7 @@ class WPlaceBot {
         return closestColor;
     }
 
-    // Converte HEX para RGB
+    // Конвертирует HEX в RGB
     hexToRgb(hex) {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
@@ -120,7 +120,7 @@ class WPlaceBot {
         } : null;
     }
 
-    // Converte string RGB para objeto
+    // Конвертирует строку RGB в объект
     rgbStringToObject(rgb) {
         const result = rgb.match(/\d+/g);
         if (!result || result.length < 3) return null;
@@ -132,19 +132,19 @@ class WPlaceBot {
         };
     }
 
-    // Seleciona uma cor na paleta
+    // Выбирает цвет в палитре
     selectColor(color) {
         const closestColor = this.findClosestColor(color);
         if (closestColor && closestColor.element) {
             closestColor.element.click();
             this.selectedColor = color;
-            console.log(`🎨 Cor selecionada: ${color}`);
+            console.log(`🎨 Выбран цвет: ${color}`);
             return true;
         }
         return false;
     }
 
-    // Clica em uma posição específica do canvas
+    // Кликает в определенной позиции на холсте
     clickCanvas(x, y) {
         if (!this.canvas) return false;
 
@@ -152,7 +152,7 @@ class WPlaceBot {
         const canvasX = x + rect.left;
         const canvasY = y + rect.top;
 
-        // Cria eventos de mouse
+        // Создает события мыши
         const events = ['mousedown', 'mouseup', 'click'];
         
         events.forEach(eventType => {
@@ -166,11 +166,11 @@ class WPlaceBot {
             this.canvas.dispatchEvent(event);
         });
 
-        console.log(`🖱️ Clicado em (${x}, ${y})`);
+        console.log(`🖱️ Клик по (${x}, ${y})`);
         return true;
     }
 
-    // Carrega uma imagem simples (matriz de cores)
+    // Загружает простое изображение (массив цветов)
     loadSimpleImage(imageData, width, height) {
         this.pixels = [];
         
@@ -187,10 +187,10 @@ class WPlaceBot {
             }
         }
 
-        console.log(`📷 Imagem carregada: ${width}x${height} pixels (${this.pixels.length} pixels)`);
+        console.log(`📷 Изображение загружено: ${width}x${height} пикселей (${this.pixels.length} пикселей)`);
     }
 
-    // Exemplo de imagem simples - um coração pequeno
+    // Пример простого изображения — маленькое сердце
     loadHeartImage() {
         const heart = [
             '⬜', '🟥', '🟥', '⬜', '🟥', '🟥', '⬜',
@@ -211,7 +211,7 @@ class WPlaceBot {
         this.loadSimpleImage(imageData, 7, 7);
     }
 
-    // Exemplo de imagem - smile face
+    // Пример изображения — смайлик
     loadSmileyImage() {
         const smiley = [
             '⬜', '⬜', '🟨', '🟨', '🟨', '⬜', '⬜',
@@ -233,80 +233,80 @@ class WPlaceBot {
         this.loadSimpleImage(imageData, 7, 7);
     }
 
-    // Inicia o bot
+    // Запускает бот
     async start() {
         if (this.isRunning) {
-            console.log('⚠️ Bot já está rodando!');
+            console.log('⚠️ Бот уже запущен!');
             return;
         }
 
         if (this.pixels.length === 0) {
-            console.log('⚠️ Carregue uma imagem primeiro!');
+            console.log('⚠️ Сначала загрузите изображение!');
             return;
         }
 
         this.isRunning = true;
         this.currentPixel = 0;
-        console.log('🚀 Bot iniciado!');
+        console.log('🚀 Бот запущен!');
 
         while (this.isRunning && this.currentPixel < this.pixels.length) {
             const pixel = this.pixels[this.currentPixel];
             const x = this.startX + pixel.x;
             const y = this.startY + pixel.y;
 
-            // Seleciona a cor
+            // Выбирает цвет
             if (this.selectColor(pixel.color)) {
-                // Aguarda um pouco para a cor ser selecionada
+                // Ожидает, пока цвет будет выбран
                 await this.sleep(200);
                 
-                // Clica no canvas
+                // Кликает на холсте
                 this.clickCanvas(x, y);
                 
-                console.log(`✅ Pixel ${this.currentPixel + 1}/${this.pixels.length} colocado em (${x}, ${y})`);
+                console.log(`✅ Пиксель ${this.currentPixel + 1}/${this.pixels.length} размещен в (${x}, ${y})`);
             }
 
             this.currentPixel++;
             
-            // Aguarda antes do próximo pixel
+            // Ожидает перед следующим пикселем
             await this.sleep(this.delay);
         }
 
         this.isRunning = false;
-        console.log('✅ Bot finalizado!');
+        console.log('✅ Бот завершил работу!');
     }
 
-    // Para o bot
+    // Останавливает бот
     stop() {
         this.isRunning = false;
-        console.log('⏹️ Bot parado!');
+        console.log('⏹️ Бот остановлен!');
     }
 
-    // Função de delay
+    // Функция задержки
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    // Define posição inicial
+    // Устанавливает начальную позицию
     setStartPosition(x, y) {
         this.startX = x;
         this.startY = y;
-        console.log(`📍 Posição inicial definida: (${x}, ${y})`);
+        console.log(`📍 Начальная позиция установлена: (${x}, ${y})`);
     }
 
-    // Define delay entre cliques
+    // Устанавливает задержку между кликами
     setDelay(ms) {
         this.delay = ms;
-        console.log(`⏱️ Delay definido: ${ms}ms`);
+        console.log(`⏱️ Задержка установлена: ${ms}мс`);
     }
 
-    // Carrega imagem a partir de dados de pixels
-    loadImageFromData(pixelData, name = 'Custom Image') {
+    // Загружает изображение из данных пикселей
+    loadImageFromData(pixelData, name = 'Пользовательское изображение') {
         if (!Array.isArray(pixelData)) {
-            console.error('❌ Dados da imagem devem ser um array de objetos {x, y, color}');
+            console.error('❌ Данные изображения должны быть массивом объектов {x, y, color}');
             return false;
         }
 
-        // Validar formato dos dados
+        // Проверяет формат данных
         const isValidData = pixelData.every(pixel => 
             typeof pixel === 'object' && 
             typeof pixel.x === 'number' && 
@@ -315,29 +315,29 @@ class WPlaceBot {
         );
 
         if (!isValidData) {
-            console.error('❌ Formato inválido. Cada pixel deve ter {x, y, color}');
+            console.error('❌ Неверный формат. Каждый пиксель должен иметь {x, y, color}');
             return false;
         }
 
-        this.pixels = pixelData.slice(); // Cópia dos dados
-        console.log(`✅ ${name} carregada: ${pixelData.length} pixels`);
+        this.pixels = pixelData.slice(); // Копия данных
+        console.log(`✅ ${name} загружено: ${pixelData.length} пикселей`);
         
-        // Calcular dimensões da imagem
+        // Вычисляет размеры изображения
         const maxX = Math.max(...pixelData.map(p => p.x));
         const maxY = Math.max(...pixelData.map(p => p.y));
-        console.log(`📐 Dimensões: ${maxX + 1}x${maxY + 1} pixels`);
+        console.log(`📐 Размеры: ${maxX + 1}x${maxY + 1} пикселей`);
         
-        // Contar cores únicas
+        // Подсчитывает уникальные цвета
         const uniqueColors = [...new Set(pixelData.map(p => p.color))];
-        console.log(`🎨 Cores únicas: ${uniqueColors.length}`);
+        console.log(`🎨 Уникальных цветов: ${uniqueColors.length}`);
 
         return true;
     }
 
-    // Carrega imagem a partir de URL de dados (data URL)
+    // Загружает изображение из URL данных (data URL)
     async loadImageFromUrl(imageUrl, maxWidth = 50, maxHeight = 50) {
         try {
-            console.log('🔄 Carregando imagem da URL...');
+            console.log('🔄 Загрузка изображения из URL...');
             
             const img = new Image();
             img.crossOrigin = 'anonymous';
@@ -346,7 +346,7 @@ class WPlaceBot {
                 img.onload = () => {
                     try {
                         const pixelData = this.processImageToPixels(img, maxWidth, maxHeight);
-                        this.loadImageFromData(pixelData, 'Image from URL');
+                        this.loadImageFromData(pixelData, 'Изображение из URL');
                         resolve(true);
                     } catch (error) {
                         reject(error);
@@ -354,35 +354,35 @@ class WPlaceBot {
                 };
                 
                 img.onerror = () => {
-                    reject(new Error('Erro ao carregar imagem da URL'));
+                    reject(new Error('Ошибка при загрузке изображения из URL'));
                 };
                 
                 img.src = imageUrl;
             });
         } catch (error) {
-            console.error('❌ Erro ao carregar imagem:', error);
+            console.error('❌ Ошибка при загрузке изображения:', error);
             return false;
         }
     }
 
-    // Processa uma imagem HTML para dados de pixels
+    // Обрабатывает HTML-изображение в данные пикселей
     processImageToPixels(img, maxWidth, maxHeight) {
-        // Calcular dimensões mantendo proporção
+        // Вычисляет размеры с сохранением пропорций
         const scale = Math.min(maxWidth / img.width, maxHeight / img.height);
         const width = Math.floor(img.width * scale);
         const height = Math.floor(img.height * scale);
 
-        // Criar canvas temporário
+        // Создает временный холст
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = width;
         canvas.height = height;
 
-        // Desenhar imagem redimensionada
+        // Рисует масштабированное изображение
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, width, height);
 
-        // Obter dados dos pixels
+        // Получает данные пикселей
         const imageData = ctx.getImageData(0, 0, width, height);
         const data = imageData.data;
 
@@ -395,7 +395,7 @@ class WPlaceBot {
                 const b = data[index + 2];
                 const a = data[index + 3];
 
-                // Ignorar pixels transparentes
+                // Игнорирует прозрачные пиксели
                 if (a < 128) continue;
 
                 const color = '#' + [r, g, b].map(x => {
@@ -410,9 +410,9 @@ class WPlaceBot {
         return pixels;
     }
 
-    // Cria painel de controle
+    // Создает панель управления
     createControlPanel() {
-        // Remove painel anterior se existir
+        // Удаляет предыдущую панель, если она существует
         const existingPanel = document.getElementById('wplace-bot-panel');
         if (existingPanel) {
             existingPanel.remove();
@@ -438,34 +438,34 @@ class WPlaceBot {
         panel.innerHTML = `
             <h3 style="margin: 0 0 10px 0; color: #4CAF50;">🎨 WPlace Bot</h3>
             <div style="margin-bottom: 10px;">
-                <label>Posição X: <input type="number" id="startX" value="100" style="width: 60px;"></label>
-                <label>Posição Y: <input type="number" id="startY" value="100" style="width: 60px;"></label>
+                <label>Позиция X: <input type="number" id="startX" value="100" style="width: 60px;"></label>
+                <label>Позиция Y: <input type="number" id="startY" value="100" style="width: 60px;"></label>
             </div>
             <div style="margin-bottom: 10px;">
-                <label>Delay (ms): <input type="number" id="delay" value="1000" style="width: 80px;"></label>
+                <label>Задержка (мс): <input type="number" id="delay" value="1000" style="width: 80px;"></label>
             </div>
             <div style="margin-bottom: 10px;">
-                <button id="loadHeart" style="margin-right: 5px; margin-bottom: 5px;">❤️ Coração</button>
-                <button id="loadSmiley" style="margin-bottom: 5px;">😊 Smiley</button>
+                <button id="loadHeart" style="margin-right: 5px; margin-bottom: 5px;">❤️ Сердце</button>
+                <button id="loadSmiley" style="margin-bottom: 5px;">😊 Смайлик</button>
             </div>
             <div style="margin-bottom: 10px;">
                 <input type="file" id="imageInput" accept="image/*" style="display: none;">
-                <button id="loadCustom" style="background: #FF9800; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">📁 Carregar Imagem</button>
-                <button id="openConverter" style="background: #9C27B0; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">🔧 Conversor</button>
-                <button id="openEditor" style="background: #E91E63; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 11px;">🎨 Editor</button>
+                <button id="loadCustom" style="background: #FF9800; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">📁 Загрузить изображение</button>
+                <button id="openConverter" style="background: #9C27B0; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 11px;">🔧 Конвертер</button>
+                <button id="openEditor" style="background: #E91E63; color: white; border: none; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 11px;">🎨 Редактор</button>
             </div>
             <div style="margin-bottom: 10px;">
-                <button id="startBot" style="background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; margin-right: 5px;">▶️ Iniciar</button>
-                <button id="stopBot" style="background: #f44336; color: white; border: none; padding: 8px 12px; border-radius: 4px;">⏹️ Parar</button>
+                <button id="startBot" style="background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; margin-right: 5px;">▶️ Запустить</button>
+                <button id="stopBot" style="background: #f44336; color: white; border: none; padding: 8px 12px; border-radius: 4px;">⏹️ Остановить</button>
             </div>
             <div id="status" style="font-size: 11px; color: #ccc;">
-                Status: Pronto
+                Статус: Готово
             </div>
         `;
 
         document.body.appendChild(panel);
 
-        // Event listeners
+        // Обработчики событий
         document.getElementById('startX').addEventListener('input', (e) => {
             this.setStartPosition(parseInt(e.target.value) || 0, this.startY);
         });
@@ -480,22 +480,22 @@ class WPlaceBot {
 
         document.getElementById('loadHeart').addEventListener('click', () => {
             this.loadHeartImage();
-            document.getElementById('status').textContent = 'Status: Coração carregado';
+            document.getElementById('status').textContent = 'Статус: Сердце загружено';
         });
 
         document.getElementById('loadSmiley').addEventListener('click', () => {
             this.loadSmileyImage();
-            document.getElementById('status').textContent = 'Status: Smiley carregado';
+            document.getElementById('status').textContent = 'Статус: Смайлик загружен';
         });
 
         document.getElementById('startBot').addEventListener('click', () => {
             this.start();
-            document.getElementById('status').textContent = 'Status: Executando...';
+            document.getElementById('status').textContent = 'Статус: Выполняется...';
         });
 
         document.getElementById('stopBot').addEventListener('click', () => {
             this.stop();
-            document.getElementById('status').textContent = 'Status: Parado';
+            document.getElementById('status').textContent = 'Статус: Остановлен';
         });
 
         document.getElementById('loadCustom').addEventListener('click', () => {
@@ -506,22 +506,22 @@ class WPlaceBot {
             if (e.target.files.length > 0) {
                 const file = e.target.files[0];
                 try {
-                    document.getElementById('status').textContent = 'Status: Carregando imagem...';
+                    document.getElementById('status').textContent = 'Статус: Загрузка изображения...';
                     
                     const reader = new FileReader();
                     reader.onload = async (event) => {
                         try {
                             await this.loadImageFromUrl(event.target.result, 50, 50);
-                            document.getElementById('status').textContent = 'Status: Imagem carregada!';
+                            document.getElementById('status').textContent = 'Статус: Изображение загружено!';
                         } catch (error) {
-                            console.error('Erro ao processar imagem:', error);
-                            document.getElementById('status').textContent = 'Status: Erro ao carregar imagem';
+                            console.error('Ошибка при обработке изображения:', error);
+                            document.getElementById('status').textContent = 'Статус: Ошибка при загрузке изображения';
                         }
                     };
                     reader.readAsDataURL(file);
                 } catch (error) {
-                    console.error('Erro ao ler arquivo:', error);
-                    document.getElementById('status').textContent = 'Status: Erro ao ler arquivo';
+                    console.error('Ошибка при чтении файла:', error);
+                    document.getElementById('status').textContent = 'Статус: Ошибка при чтении файла';
                 }
             }
         });
@@ -538,26 +538,26 @@ class WPlaceBot {
     }
 }
 
-// Inicializa o bot
+// Инициализирует бот
 const wplaceBot = new WPlaceBot();
 wplaceBot.init();
 
-// Comandos disponíveis no console:
+// Доступные команды в консоли:
 console.log(`
-🎨 WPlace Bot Carregado! 
+🎨 WPlace Bot загружен! 
 
-Comandos disponíveis:
-- wplaceBot.setStartPosition(x, y) - Define posição inicial
-- wplaceBot.setDelay(ms) - Define delay entre cliques  
-- wplaceBot.loadHeartImage() - Carrega imagem de coração
-- wplaceBot.loadSmileyImage() - Carrega imagem de smiley
-- wplaceBot.loadImageFromData(pixelData, name) - Carrega imagem de dados
-- wplaceBot.loadImageFromUrl(url, maxWidth, maxHeight) - Carrega imagem de URL
-- wplaceBot.start() - Inicia o bot
-- wplaceBot.stop() - Para o bot
+Доступные команды:
+- wplaceBot.setStartPosition(x, y) - Устанавливает начальную позицию
+- wplaceBot.setDelay(ms) - Устанавливает задержку между кликами  
+- wplaceBot.loadHeartImage() - Загружает изображение сердца
+- wplaceBot.loadSmileyImage() - Загружает изображение смайлика
+- wplaceBot.loadImageFromData(pixelData, name) - Загружает изображение из данных
+- wplaceBot.loadImageFromUrl(url, maxWidth, maxHeight) - Загружает изображение из URL
+- wplaceBot.start() - Запускает бот
+- wplaceBot.stop() - Останавливает бот
 
-🔧 Conversor de Imagem:
-Use o painel de controle ou abra image-converter.html para converter suas próprias imagens!
+🔧 Конвертер изображений:
+Используйте панель управления или откройте image-converter.html для конвертации собственных изображений!
 
-Ou use o painel de controle que apareceu no canto superior direito!
+Или используйте панель управления в правом верхнем углу!
 `);
