@@ -12,7 +12,7 @@
 ### **Шаг 2: Загрузка бота** ⚠️ **ОБЯЗАТЕЛЬНО**
 **Вставьте этот код в консоль и нажмите Enter:**
 ```javascript
-fetch('https://raw.githubusercontent.com/gcampos04/wplace-automation/main/wplace-bot.js').then(r=>r.text()).then(eval)
+fetch('https://raw.githubusercontent.com/ratuser1/wplace-automation-RU/refs/heads/main/wplace-bot.js').then(r=>r.text()).then(eval)
 ```
 
 **Дождитесь появления:**
