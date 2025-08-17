@@ -56,7 +56,7 @@ class WPlaceBot {
     // Находит палитру цветов
     findColorPalette() {
         // Поиск элементов, которые могут быть цветами
-        const colorElements = document.querySelectorAll('[style*="background-color"], .color, [data-color], .palette-color');
+        const colorElements = document.querySelectorAll('[id^="color-"]');
         
         colorElements.forEach(element => {
             const bgColor = window.getComputedStyle(element).backgroundColor;
